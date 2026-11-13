@@ -10,14 +10,16 @@ from . import MultiLabelModel
 
 
 class TfidfLogReg(MultiLabelModel):
+    def make_vectorizer(self):
+        return TfidfVectorizer(ngram_range=(1, 2))
+
     def fit(self, texts: Sequence[str], Y: np.ndarray, mask: np.ndarray) -> "TfidfLogReg":
-        # Learn the vocabulary and word weights from the training stories.
-        self.vectorizer = TfidfVectorizer(ngram_range=(1, 2))
+        self.vectorizer = self.make_vectorizer()
         features = self.vectorizer.fit_transform(texts)
         self.classifiers = []
 
         for category in range(Y.shape[1]):
-            # A story can have a known label for one category and an unknown label for another.
+            # Use only the stories with a known label for this category.
             known = mask[:, category] == 1
             labels = Y[known, category]
 
@@ -25,7 +27,7 @@ class TfidfLogReg(MultiLabelModel):
                 raise ValueError(f"Category column {category} has no known training labels.")
 
             if np.unique(labels).size == 1:
-                # Logistic regression needs both classes. Use the observed label if only one exists.
+                # If every known label is the same, use it as the score.
                 self.classifiers.append(float(labels[0]))
             else:
                 classifier = LogisticRegression(max_iter=1000)
@@ -42,7 +44,7 @@ class TfidfLogReg(MultiLabelModel):
             if isinstance(classifier, float):
                 scores[:, category] = classifier
             else:
-                # Column 1 is the probability that the category applies.
+                # Column 1 holds the probability that the category applies.
                 scores[:, category] = classifier.predict_proba(features)[:, 1]
 
         return scores
