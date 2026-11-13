@@ -1,5 +1,7 @@
 """Models 1 and 2: the reference baselines."""
 
+import re
+
 import numpy as np
 
 from .models import MultiLabelModel
@@ -30,7 +32,53 @@ class ClassPriorBaseline(MultiLabelModel):
 
 
 class RuleBasedBaseline(MultiLabelModel):
-    """Model 2: hand-written regular expressions built from the LIST category definitions.
+    """Score each category using hand-written keyword rules."""
 
-    Not implemented yet.
-    """
+    keywords = {
+        "Accidents, Injuries, and Torts (Problems with Others)": (
+            r"personal injury|slip and fall|dog bite|medical malpractice|defamation"
+        ),
+        "Benefits": r"food stamps|unemployment benefits|social security|disability benefits",
+        "Civil and Human Rights": r"civil rights|racial discrimination|hate crime",
+        "Court and Lawyers": r"court date|summons|subpoena|attorney fees|small claims",
+        "Crime & Prisons": r"arrested|criminal charges|probation|jail|prison",
+        "Disaster Relief": r"fema|disaster assistance|disaster relief",
+        "Education": r"school district|expelled|special education|iep",
+        "Environmental Justice": r"toxic waste|water contamination|air pollution",
+        "Estates & Wills": r"probate|inheritance|last will|executor",
+        "Family": r"divorce|child custody|child support|adoption|restraining order",
+        "Government services": r"government agency|public records|foia|building permit",
+        "Health": r"health insurance|medical bills?|patient records|hospital",
+        "Housing": r"landlord|eviction|security deposit|rent increase|lease agreement",
+        "Immigration": r"green card|deportation|asylum|work visa|immigration",
+        "Money, Debt, and Consumer Issues": (
+            r"debt collection|credit report|credit card fraud|refund|bankruptcy"
+        ),
+        "Native American Issues and Tribal Law": r"tribal court|tribal law|tribal land",
+        "Small Business and IP": r"copyright|trademark|patent|business license",
+        "Traffic and Cars": r"traffic ticket|speeding ticket|car accident|dui|vehicle registration",
+        "Veterans & Military": r"veterans benefits|va disability|military discharge",
+        "Work and Employment": r"overtime|paychecks?|wrongful termination|workplace harassment",
+    }
+
+    def __init__(self, category_names):
+        self.patterns = []
+
+        # Keep the score columns in the same order as the category names.
+        for category in category_names:
+            pattern = re.compile(rf"\b(?:{self.keywords[category]})\b", re.IGNORECASE)
+            self.patterns.append(pattern)
+
+    def fit(self, texts, Y, mask):
+        # The written rules are fixed, so there is nothing to learn from training.
+        return self
+
+    def predict_proba(self, texts):
+        scores = np.zeros((len(texts), len(self.patterns)))
+
+        for row, story in enumerate(texts):
+            for column, pattern in enumerate(self.patterns):
+                if pattern.search(story):
+                    scores[row, column] = 1.0
+
+        return scores
