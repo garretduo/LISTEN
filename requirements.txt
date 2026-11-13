@@ -1,0 +1,8 @@
+# Lower bounds only. Not yet chosen: the deep-learning framework for the masked-loss
+# MLP and the pretrained-embedding source. Add them here once decided.
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.4
+PyYAML>=6.0
+iterative-stratification>=0.1.9
+streamlit>=1.40

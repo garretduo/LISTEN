@@ -1,0 +1,40 @@
+# LISTEN settings: seeds, split ratios, paths, and the Learned Hands file list.
+# Seeds and split ratios feed every reported result. Changing them after results
+# exist breaks comparability, so log the change in docs/decisions.md first.
+
+# One entry per repeat of the 80/10/10 split. Placeholder values; see docs/decisions.md.
+seeds: [0, 1, 2, 3, 4]
+
+# Story-level iterative stratification. Must sum to 1.
+splits:
+  train: 0.8
+  val: 0.1
+  test: 0.1
+
+# Relative to the repo root. data/ and artifacts/ are gitignored.
+paths:
+  data_dir: data
+  artifacts_dir: artifacts
+  results_dir: results
+
+data:
+  # The data page links these files relatively; this is that page's folder.
+  base_url: https://learned-hands.github.io/project-hub/texts/
+  # Which entry of `files` the models train on by default.
+  default_set: best_guess_binary
+  id_column: _id
+  text_column: full_text
+  # key -> remote and local filename, plus the row count expected after download.
+  files:
+    best_guess_binary:
+      name: 2019-04-23_best-guess_binary.csv
+      rows: 3459
+    best_guess_continuous:
+      name: 2019-04-23_best-guess_continuous.csv
+      rows: 3459
+    confidence95_binary:
+      name: 2019-04-23_95p-confidence_binary.csv
+      rows: 1506
+    confidence95_continuous:
+      name: 2019-04-23_95p-confidence_continuous.csv
+      rows: 1506

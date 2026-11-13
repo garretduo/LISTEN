@@ -218,3 +218,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# LISTEN: Learned Hands data (CC BY-NC-SA 4.0, never redistribute) and trained artifacts
+/data/
+/artifacts/
+
+# Local Claude Code instructions (not shared with the team)
+/CLAUDE.md

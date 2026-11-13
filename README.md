@@ -1,6 +1,6 @@
 # LISTEN
 
-**LISTEN** (Legal Issue Spotting in Textual Everyday Narratives) is a local Streamlit app that reads a person's own story of a legal problem and suggests which of 20 LIST categories apply, with word-level explanations. The app is used as a small study of where TF-IDF and embedding-based classifiers fail on lay legal narratives, built on the [Learned Hands]([url](https://learnedhands.law.stanford.edu/)) legal dataset.
+**LISTEN** (Legal Issue Spotting in Textual Everyday Narratives) is a local Streamlit app that reads a person's own story of a legal problem and suggests which of 20 LIST categories apply, with word-level explanations. The app is used as a small study of where TF-IDF and embedding-based classifiers fail on lay legal narratives, built on the [Learned Hands](https://learnedhands.law.stanford.edu/) legal dataset.
 
 LISTEN was built by **Garret Duo, Lyndon Huang, and Sohum Sarwate** as a final project for the COSC 72 course (Accelerated Computational Linguistics) at Dartmouth College for the Fall 2026 quarter.
 
@@ -51,11 +51,11 @@ $$
 \mathcal{L}_i = -\sum_{c=1}^{20} m_{ic}\left[\,y_{ic}\log p_{ic} + (1-y_{ic})\log(1-p_{ic})\,\right]
 $$
 
-The logistic regression for category $c$ is fit only on rows where $m_{ic} = 1$, and thresholds and per-category metrics use the same rows. Iterative stratification needs a complete label matrix, so for splitting only we set omitted cells to 0. If the best-guess files turn out to have no omitted cells, $m$ is all ones.
+The logistic regression for category $c$ is fit only on rows where $m_{ic} = 1$, and thresholds and per-category metrics use the same rows. Iterative stratification needs a complete label matrix, so for splitting only we set omitted cells to 0. Both versions of the dataset have omitted cells, so $m$ is not all ones: 48.6% of the label cells in the best-guess binary file and 46.8% in the 95%-confidence binary file are empty (checked 2026-11-13). The data page explains the omissions in the 95%-confidence files but not in the best-guess files, and we treat both the same way.
 
 ## Data
 
-We use [Learned Hands]([url](https://learnedhands.law.stanford.edu/)), a corpus of anonymized posts from the r/legaladvice subreddit. Volunteer lawyers and law students, and later the public, labeled the posts in an online game using the Legal Issues Taxonomy (LIST). It was built by Suffolk University's Legal Innovation and Technology (LIT) Lab and Stanford's Legal Design Lab.
+We use [Learned Hands](https://learnedhands.law.stanford.edu/), a corpus of anonymized posts from the r/legaladvice subreddit. Volunteer lawyers and law students, and later the public, labeled the posts in an online game using the Legal Issues Taxonomy (LIST). It was built by Suffolk University's Legal Innovation and Technology (LIT) Lab and Stanford's Legal Design Lab.
 
 There are two versions of the dataset. The best-guess version has 3,459 texts and 20 categories, and the 95%-confidence version is a smaller, higher-agreement subset of 1,506 texts. These counts come from the project's data page.
 
@@ -63,12 +63,12 @@ The data is not in this repository. `scripts/download_data.py` fetches it into `
 
 ## Quick start
 
-To run a fresh clone end-to-end, run the following commands in the exact order specificed:
+To run a fresh clone end-to-end, run the following commands in the exact order specified:
 
 1. `pip install -r requirements.txt` (installs required libraries)
-3. `make data` (downloads the Learned Hands dataset)
-4. `make results` (fits every model and prints the results table)
-5. `make app` (launches the Streamlit app)
+2. `make data` (downloads the Learned Hands dataset)
+3. `make results` (fits every model and prints the results table)
+4. `make app` (launches the Streamlit app)
 
 ## Repository layout
 
@@ -80,6 +80,7 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 ├── requirements.txt
 ├── configs/default.yaml        seeds, split ratios, paths
 ├── scripts/download_data.py
+├── scripts/run_results.py      driver for `make results`
 ├── src/listen/
 │   ├── data.py                 loading, label masks, splits
 │   ├── evaluate.py             metrics and bootstrap intervals
@@ -89,7 +90,7 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 │   └── explain.py              word contributions and occlusion
 ├── app/streamlit_app.py
 ├── analysis/                   error-labeling sheet, minimal pairs
-├── docs/                       decisions.md, data_notes.md, genai_log.md
+├── docs/                       decisions.md, data_notes.md
 ├── results/                    small tables only
 └── data/, artifacts/           gitignored
 ```
@@ -110,7 +111,6 @@ TBD
 
 - Any change to splits or metrics goes in `docs/decisions.md`, so results stay comparable.
 - Seeds live in `configs/default.yaml`.
-- We log our use of generative AI in `docs/genai_log.md`.
 
 ## License and attribution
 
@@ -124,5 +124,5 @@ The Learned Hands data is licensed CC BY-NC-SA 4.0 by the Suffolk LIT Lab and th
 - LIST, the Legal Issues Taxonomy: https://www.taxonomy.legal/
 - Spot, Suffolk's deployed issue spotter built on this data: https://spot.suffolklitlab.org/
 - Sechidis, Tsoumakas and Vlahavas (2011). On the Stratification of Multi-Label Data. ECML PKDD.
-- Lipton, Elkan and Naryanaswamy (2014). Optimal Thresholding of Classifiers to Maximize F1 Measure. ECML PKDD.
+- Lipton, Elkan and Narayanaswamy (2014). Optimal Thresholding of Classifiers to Maximize F1 Measure. ECML PKDD.
 - Jurafsky and Martin. Speech and Language Processing (3rd ed. draft). https://web.stanford.edu/~jurafsky/slp3/
