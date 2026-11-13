@@ -41,7 +41,7 @@ Our proposed model is Model 5.
 
 ### Splits and metrics
 
-We split 80/10/10 at the story level with iterative stratification, so rare categories appear in every split, and repeat with five seeds. The test set is touched once, after all model choices are frozen. We tune one threshold per category on the validation split to maximize F1. The headline metric is macro-F1. We also report micro-F1, per-category precision, recall and F1, recall at 3, and 95% bootstrap confidence intervals over stories. We do not use per-label accuracy, because most categories are absent from most stories and predicting nothing scores high.
+We split 80/10/10 at the story level with iterative stratification, keep near-duplicate stories in the same part so a story and its copy never land on opposite sides of the train/test line, and repeat with five seeds. The splits are frozen as id lists in `results/splits/`, so every teammate trains and tests on identical stories (see `docs/using_splits.md`). The rarest categories cannot appear in every part: in the best-guess file Disaster Relief has 3 positive stories, Veterans & Military 4, Environmental Justice 8, and Native American Issues none (counts in `docs/data_notes.md`), so their validation or test parts can have no positives at all. The test set is touched once, after all model choices are frozen. We tune one threshold per category on the validation split to maximize F1. The headline metric is macro-F1. We also report micro-F1, per-category precision, recall and F1, recall at 3, and 95% bootstrap confidence intervals over stories. We do not use per-label accuracy, because most categories are absent from most stories and predicting nothing scores high.
 
 ### Partially labeled stories
   
@@ -67,8 +67,11 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 
 1. `pip install -r requirements.txt` (installs required libraries)
 2. `make data` (downloads the Learned Hands dataset)
-3. `make results` (fits every model and prints the results table)
+3. `make results` (fits every model and prints the results table; until the models exist it prints each seed's split sizes and then stops with a "not implemented yet" error, on purpose)
 4. `make app` (launches the Streamlit app)
+5. `make test` (optional final check: runs the test suite, and skips the data-backed tests if `data/` is missing)
+
+The train/validation/test split files are already committed in `results/splits/`, so no step above creates them (`make splits` only regenerates them when the split rules change). Teammates who load data or build a model should read `docs/using_splits.md` first.
 
 ## Repository layout
 
@@ -78,20 +81,26 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 ├── LICENSE
 ├── Makefile
 ├── requirements.txt
+├── pytest.ini                  test settings (`make test`)
 ├── configs/default.yaml        seeds, split ratios, paths
 ├── scripts/download_data.py
 ├── scripts/run_results.py      driver for `make results`
+├── scripts/make_splits.py      writes and checks the frozen splits (`make splits`)
 ├── src/listen/
-│   ├── data.py                 loading, label masks, splits
+│   ├── text.py                 clean_text, the one text-cleaning function
+│   ├── splits.py               near-duplicate groups and grouped stratified split
+│   ├── data.py                 loading, label masks, get_split (frozen splits)
 │   ├── evaluate.py             metrics and bootstrap intervals
 │   ├── thresholds.py           per-category threshold tuning
 │   ├── baselines.py            class-prior and rule-based baselines
 │   ├── models/                 TF-IDF, embedding + LR, embedding + network
 │   └── explain.py              word contributions and occlusion
+├── tests/                      cleaning, splits, data loading, doc examples
 ├── app/streamlit_app.py
 ├── analysis/                   error-labeling sheet, minimal pairs
-├── docs/                       decisions.md, data_notes.md
+├── docs/                       decisions.md, data_notes.md, using_splits.md
 ├── results/                    small tables only
+│   └── splits/                 frozen train/val/test id lists (ids only)
 └── data/, artifacts/           gitignored
 ```
 
