@@ -1,0 +1,267 @@
+{
+  "categories": [
+    "Accidents, Injuries, and Torts (Problems with Others)",
+    "Benefits",
+    "Civil and Human Rights",
+    "Court and Lawyers",
+    "Crime & Prisons",
+    "Disaster Relief",
+    "Education",
+    "Environmental Justice",
+    "Estates & Wills",
+    "Family",
+    "Government services",
+    "Health",
+    "Housing",
+    "Immigration",
+    "Money, Debt, and Consumer Issues",
+    "Native American Issues and Tribal Law",
+    "Small Business and IP",
+    "Traffic and Cars",
+    "Veterans & Military",
+    "Work and Employment"
+  ],
+  "cleaning_version": 1,
+  "created": "2026-11-13",
+  "data_set": "best_guess_binary",
+  "file": "2019-04-23_best-guess_binary.csv",
+  "grouping": {
+    "groups": [
+      [
+        "5b60e59cda52255c20cffd30",
+        "5b60e59cda52255c20d0093d"
+      ],
+      [
+        "5b60e59cda52255c20d0002a",
+        "5b60e59cda52255c20d0007e"
+      ],
+      [
+        "5b60e59cda52255c20d00315",
+        "5b60e59cda52255c20d00339"
+      ],
+      [
+        "5b60e59cda52255c20d0039f",
+        "5b60e59cda52255c20d008e6"
+      ],
+      [
+        "5b60e59cda52255c20d00914",
+        "5b60e59cda52255c20d00ac4"
+      ],
+      [
+        "5b60e59cda52255c20d00d8a",
+        "5b60e59cda52255c20d00dbc",
+        "5b60e59cda52255c20d00dea",
+        "5b60e59cda52255c20d00e25"
+      ],
+      [
+        "5b60e59cda52255c20d00dda",
+        "5b60e59cda52255c20d00e16"
+      ],
+      [
+        "5b60e59cda52255c20d011c7",
+        "5b60e59cda52255c20d011ce"
+      ],
+      [
+        "5b60e59cda52255c20d01c8b",
+        "5b60e59cda52255c20d01cdd"
+      ],
+      [
+        "5b60e59cda52255c20d01eae",
+        "5b60e59cda52255c20d01f16"
+      ],
+      [
+        "5b60e59cda52255c20d01ed2",
+        "5b60e59cda52255c20d01f68"
+      ],
+      [
+        "5b60e59cda52255c20d01fdc",
+        "5b60e59cda52255c20d01fe1"
+      ],
+      [
+        "5b60e59cda52255c20d0200f",
+        "5b60e59dda52255c20d02aab"
+      ],
+      [
+        "5b60e59cda52255c20d02277",
+        "5b60e59cda52255c20d022f7"
+      ],
+      [
+        "5b60e59dda52255c20d028bb",
+        "5b60e59dda52255c20d028c0"
+      ],
+      [
+        "5b60e59dda52255c20d02dd6",
+        "5b60e59dda52255c20d02e68"
+      ],
+      [
+        "5b60e59dda52255c20d0355b",
+        "5b60e59dda52255c20d03615"
+      ],
+      [
+        "5b60e59dda52255c20d03b9a",
+        "5b60e59dda52255c20d03bd3"
+      ],
+      [
+        "5b60e59dda52255c20d03c69",
+        "5b60e59dda52255c20d03cbd"
+      ],
+      [
+        "5b60e59dda52255c20d04227",
+        "5b60e59dda52255c20d0431b"
+      ],
+      [
+        "5b60e59eda52255c20d045fe",
+        "5b60e59eda52255c20d046b7"
+      ],
+      [
+        "5b60e59eda52255c20d046bf",
+        "5b60e59eda52255c20d0482b"
+      ],
+      [
+        "5b60e59eda52255c20d049e8",
+        "5b60e59eda52255c20d04a12"
+      ],
+      [
+        "5b60e59eda52255c20d04b82",
+        "5b60e59eda52255c20d04bd2"
+      ],
+      [
+        "5b60e59eda52255c20d04e8b",
+        "5b60e59eda52255c20d0584a"
+      ],
+      [
+        "5b60e59eda52255c20d05671",
+        "5b60e59eda52255c20d056cf"
+      ],
+      [
+        "5b60e59eda52255c20d05716",
+        "5b60e59eda52255c20d057e4"
+      ],
+      [
+        "5b60e59eda52255c20d0585f",
+        "5b60e59eda52255c20d058df"
+      ],
+      [
+        "5b60e59fda52255c20d06708",
+        "5b60e59fda52255c20d06b4c"
+      ],
+      [
+        "5b60e59fda52255c20d073d3",
+        "5b60e59fda52255c20d073fd"
+      ],
+      [
+        "5b60e59fda52255c20d0747c",
+        "5b60e59fda52255c20d08f6f"
+      ],
+      [
+        "5b60e59fda52255c20d07528",
+        "5b60e59fda52255c20d07595"
+      ],
+      [
+        "5b60e59fda52255c20d0754e",
+        "5b60e59fda52255c20d07eab"
+      ],
+      [
+        "5b60e59fda52255c20d076d3",
+        "5b60e59fda52255c20d0775e"
+      ],
+      [
+        "5b60e59fda52255c20d077a5",
+        "5b60e59fda52255c20d0795e"
+      ],
+      [
+        "5b60e59fda52255c20d080c8",
+        "5b60e59fda52255c20d0869c"
+      ],
+      [
+        "5b60e59fda52255c20d0839b",
+        "5b60e59fda52255c20d083cd"
+      ],
+      [
+        "5b60e59fda52255c20d08467",
+        "5b60e59fda52255c20d08482"
+      ],
+      [
+        "5b60e59fda52255c20d087c5",
+        "5b60e59fda52255c20d0882b"
+      ],
+      [
+        "5b60e59fda52255c20d0898c",
+        "5b60e59fda52255c20d0899c"
+      ],
+      [
+        "5b60e59fda52255c20d08be0",
+        "5b60e5a1da52255c20d09876"
+      ],
+      [
+        "5b60e59fda52255c20d08dd1",
+        "5b60e59fda52255c20d08e14"
+      ],
+      [
+        "5b60e5a0da52255c20d0927e",
+        "5b60e5a0da52255c20d092c6",
+        "5b60e5a0da52255c20d09336"
+      ],
+      [
+        "5b60e5a0da52255c20d092a9",
+        "5b60e5a0da52255c20d0935c"
+      ],
+      [
+        "5b60e5a1da52255c20d099af",
+        "5b60e5a1da52255c20d099bf"
+      ],
+      [
+        "5b60e5a1da52255c20d09ae8",
+        "5b60e5a1da52255c20d0a254"
+      ],
+      [
+        "5b60e5a1da52255c20d09b5c",
+        "5b60e5a1da52255c20d09ba1"
+      ],
+      [
+        "5b60e5a1da52255c20d09c60",
+        "5b60e5a1da52255c20d0a16e"
+      ],
+      [
+        "5b60e5a1da52255c20d09d13",
+        "5b60e5a1da52255c20d09d69"
+      ],
+      [
+        "5b60e66dda52255c20df3998",
+        "5b60e66dda52255c20df39e3"
+      ],
+      [
+        "5b60e66dda52255c20df3d44",
+        "5b60e66dda52255c20df3d88"
+      ],
+      [
+        "5b60e66dda52255c20df3f7d",
+        "5b60e66dda52255c20df3fab"
+      ]
+    ],
+    "k": 5,
+    "threshold": 0.8,
+    "version": 1
+  },
+  "method": "Grouped multilabel iterative stratification: near-duplicate stories share a group, groups are split into 10 folds stratified on the labels (omitted cells counted as 0 for splitting only); fold 0 is test, fold 1 is val, the remaining folds are train; rows sorted by _id.",
+  "n_stories": 3459,
+  "ratios": {
+    "test": 0.1,
+    "train": 0.8,
+    "val": 0.1
+  },
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sha256": "b8b0ac12026f45a70e1552e059e190343c486bbd065b4b2be47f4aac587f28c5",
+  "versions": {
+    "iterative-stratification": "0.1.9",
+    "numpy": "2.5.4",
+    "python": "3.12.3",
+    "scikit-learn": "1.9.1"
+  }
+}
