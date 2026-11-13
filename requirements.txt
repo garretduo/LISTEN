@@ -1,9 +1,11 @@
-# Lower bounds only. Not yet chosen: the deep-learning framework for the masked-loss
-# MLP and the pretrained-embedding source. Add them here once decided.
+# Lower bounds only, except one exact pin (below). torch is listed without a bound.
 numpy>=1.26
 pandas>=2.2
 scikit-learn>=1.4
 PyYAML>=6.0
-iterative-stratification>=0.1.9
+# Pinned exactly: iterative-stratification imports private scikit-learn APIs, so a newer
+# release or scikit-learn can break it. Only regenerating splits (make splits) needs it.
+iterative-stratification==0.1.9
 streamlit>=1.40
 torch
+pytest>=8
