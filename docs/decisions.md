@@ -98,7 +98,7 @@ Labeled positive stories per part, written train/val/test (measured 2026-11-13 o
 | Immigration (26) | 20/3/3 | 21/2/3 | 21/3/2 | 21/3/2 | 22/2/2 |
 | Native American Issues and Tribal Law (0) | 0/0/0 | 0/0/0 | 0/0/0 | 0/0/0 | 0/0/0 |
 
-**Left to the evaluation sprint.** This sprint only provides the splits. How to set thresholds for such categories, and whether macro-F1 skips them, counts them as 0 or uses another rule, is not decided here. Decide it once, write it here, and apply it to all five models. Until then do not report a macro-F1 that silently averages over categories whose F1 is undefined.
+**Left to the evaluation sprint.** This sprint only provides the splits. How to set thresholds for such categories, and whether macro-F1 skips them, counts them as 0 or uses another rule, is not decided here. Decide it once, write it here, and apply it to all five models. Until then do not report a macro-F1 that silently averages over categories whose F1 is undefined. Decided in "headline metrics use 16 categories", below.
 
 **Changing it safely.** Dropping a column changes the shape of every label array, so it needs the same steps as a split change. Merging or removing categories would also change the research question; ask the team first.
 
@@ -109,3 +109,19 @@ Labeled positive stories per part, written train/val/test (measured 2026-11-13 o
 **Why.** A fixed-shape numeric array is what scikit-learn and PyTorch-style code expect, and NaNs would silently poison them. Pairing it with a mask keeps the README's rule that omitted means unknown. About 48.6% of the label cells are omitted, so ignoring the mask would treat roughly half the cells as negatives.
 
 **Changing it safely.** The array dtype, shape, and the Y/mask convention are used by every model and by the tests in `tests/`. If the convention changes, update `docs/using_splits.md`, the tests and all models in the same change, and add an entry here.
+
+## 2026-11-13: headline metrics use 16 categories
+
+**Decision.** Macro-F1 and micro-F1 are computed over the 16 categories that have 10 or more positive stories in the best-guess file. The other four (Disaster Relief, Environmental Justice, Native American Issues and Tribal Law, Veterans & Military) are listed under `evaluation.excluded_categories` in `configs/default.yaml`. All five models are scored on the same 16 for every seed, so numbers compare across models and seeds. Recall@3 still ranks and counts all 20 categories, because it is defined for any story with a known positive.
+
+**Why.** The rule above guarantees at least 2 positives per scored category in every val and test part (table in "rare categories keep their column"; also checked on the frozen splits when this was written), so F1 and the tuned threshold are always defined. Averaging "whatever is defined" would change the set of categories from seed to seed, and counting undefined F1 as 0 would penalize every model for a category nobody can be scored on.
+
+**What stays the same.** The four columns are still in `Y` and `mask`, still trained, and still listed per category in `per_category.csv`, which `make results` writes to `results/`, where precision, recall or F1 is blank when undefined.
+
+**Other rules.**
+- F1 and recall for a category are undefined (n/a) when the part has no known positive story for it; precision is undefined when nothing was predicted.
+- Threshold for a category with no known positive in val: 0.5. This only affects the four excluded categories.
+- Bootstrap: a resample of stories can lose every positive of a scored category (a category with 2 or 3 test positives loses them all in roughly 1 resample in 7). That category is skipped in that resample's macro-F1, as in the rule above, instead of counting as 0. This slightly widens the low end of the interval.
+- A model with constant scores (the class prior) gets a tuned threshold that predicts every category for every story, because that maximizes F1 for it. Its F1 is a reference floor, not a bug.
+
+**Changing it safely.** A different excluded list or minimum count changes every headline number, so log it here and re-run all five models.
