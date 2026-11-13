@@ -2,7 +2,9 @@
 # Seeds and split ratios feed every reported result. Changing them after results
 # exist breaks comparability, so log the change in docs/decisions.md first.
 
-# One entry per repeat of the 80/10/10 split. Placeholder values; see docs/decisions.md.
+# One entry per repeat of the 80/10/10 split. Frozen: the splits for these seeds are
+# committed in results/splits/ (docs/decisions.md, "seeds 0 to 4 are frozen"). Editing
+# this list means regenerating the frozen splits and logging the change there.
 seeds: [0, 1, 2, 3, 4]
 
 # Story-level iterative stratification. Must sum to 1.
@@ -16,6 +18,9 @@ paths:
   data_dir: data
   artifacts_dir: artifacts
   results_dir: results
+  # Frozen train/val/test assignments (small CSV + JSON, committed to git). Written by
+  # scripts/make_splits.py, read by listen.data.get_split. See docs/decisions.md.
+  splits_dir: results/splits
 
 data:
   # The data page links these files relatively; this is that page's folder.

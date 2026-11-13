@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Fit every model and print the results table (the driver behind `make results`).
 
-Input:  configs/default.yaml and the CSVs in data/ (run `make data` first).
-Output: the results table on stdout. Small tables may later be saved to results/.
+Input:  configs/default.yaml, the CSVs in data/ (run `make data` first) and the frozen
+        splits in results/splits/ (committed; `make splits` recreates them).
+Output: one line per seed with the train, val and test sizes, on stdout. The results table
+        will follow, and small tables may later be saved to results/.
 
-Not implemented yet: until the model and scoring code exists, this prints a notice
-and exits with status 1.
+Not implemented yet: the model and scoring code does not exist, so after loading the
+splits this prints a notice and exits with status 1. That keeps `make results` from
+passing silently before the models are in.
 
 Run it through make (`make results`) so that src/ is on PYTHONPATH.
 """
@@ -26,12 +29,21 @@ def main():
         config = yaml.safe_load(f)
 
     try:
-        data.load_dataset(config)
-        # Remaining steps once the stand-ins are filled in (README, "Splits and metrics"):
-        #   for each seed: split, fit the five models, tune thresholds on validation,
-        #   evaluate on the test split once, then print the table with bootstrap CIs.
-    except NotImplementedError:
-        sys.exit("Model and scoring code is not implemented yet.")
+        for seed in config["seeds"]:
+            split = data.get_split(seed, config)
+            print(
+                f"seed {seed}: train {len(split.train.ids)}, "
+                f"val {len(split.val.ids)}, test {len(split.test.ids)}"
+            )
+            # Remaining steps once the model code exists (README, "Splits and metrics"):
+            #   fit the five models on split.train (passing split.train.mask), tune
+            #   thresholds on split.val, evaluate on split.test once, then print the
+            #   table with bootstrap CIs.
+    except (FileNotFoundError, ValueError) as error:
+        sys.exit(str(error))
+
+    # Always fail until the model code exists, so a green `make results` means results.
+    sys.exit("Model and scoring code is not implemented yet.")
 
 
 if __name__ == "__main__":
