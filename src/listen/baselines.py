@@ -1,18 +1,32 @@
-"""Models 1 and 2: the reference baselines.
+"""Models 1 and 2: the reference baselines."""
 
-Neither is part of the controlled comparison in Models 3 to 5. Both follow the
-MultiLabelModel interface so they run through the same evaluation.
-"""
+import numpy as np
 
 from .models import MultiLabelModel
 
 
 class ClassPriorBaseline(MultiLabelModel):
-    """Model 1: predict each category at its training frequency, ignoring the text.
+    """Score each category by how often it appears in the training set."""
 
-    Not implemented yet. The frequency for a category must come from the rows where
-    that category's label is known (mask == 1).
-    """
+    def fit(self, texts, Y, mask):
+        self.category_scores = np.empty(Y.shape[1])
+
+        for category in range(Y.shape[1]):
+            # Skip stories whose label for this category is unknown.
+            known = mask[:, category] == 1
+            labels = Y[known, category]
+
+            if labels.size == 0:
+                raise ValueError(f"Category column {category} has no known training labels.")
+
+            # The average of the 0s and 1s is the fraction marked yes.
+            self.category_scores[category] = labels.mean()
+
+        return self
+
+    def predict_proba(self, texts):
+        # Give every new story the same category scores.
+        return np.tile(self.category_scores, (len(texts), 1))
 
 
 class RuleBasedBaseline(MultiLabelModel):
