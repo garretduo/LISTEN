@@ -13,6 +13,17 @@ splits:
   val: 0.1
   test: 0.1
 
+evaluation:
+  # Macro-F1 and micro-F1 average every category except these four, which have fewer than
+  # 10 positive stories in the best-guess file (docs/decisions.md, "headline metrics use
+  # 16 categories"). Fixed so every model, seed and part is scored on the same set.
+  # Review the list if data.default_set changes.
+  excluded_categories:
+    - Disaster Relief
+    - Environmental Justice
+    - Native American Issues and Tribal Law
+    - Veterans & Military
+
 # Relative to the repo root. data/ and artifacts/ are gitignored.
 paths:
   data_dir: data
