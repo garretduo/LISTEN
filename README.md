@@ -67,7 +67,7 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 
 1. `pip install -r requirements.txt` (installs required libraries)
 2. `make data` (downloads the Learned Hands dataset)
-3. `make results` (fits every model, scores the test part and prints the results table; the first run also downloads the GloVe vectors, about 860 MB, into `data/`; `make glove` fetches them on their own)
+3. `make results` (fits every model, scores the test part and prints the results table; the first run also downloads the GloVe vectors, about 860 MB, into `data/`; `make glove` fetches them on their own; it also saves each model's per-story probabilities, in a `scores` folder under `results/` after a test run, and the app's models under `artifacts/`; `python scripts/run_results.py --part val` scores validation instead of test, for use while building)
 4. `make app` (launches the Streamlit app)
 5. `make test` (optional final check: runs the test suite, and skips the data-backed tests if `data/` is missing)
 
