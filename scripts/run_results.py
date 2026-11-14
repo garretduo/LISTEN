@@ -2,7 +2,8 @@
 """Fit the five models, tune thresholds on val, score the test part, print the results table.
 
 Input:  configs/default.yaml, the CSVs in data/ (run `make data`), the frozen splits in
-        results/splits/, and data/glove.6B.50d.txt (GloVe vectors for the embedding models).
+        results/splits/, and data/glove.6B.50d.txt (GloVe vectors for the embedding models;
+        `make results` downloads it if missing).
 Output: a table on stdout (per model and seed with 95% bootstrap intervals, then the mean
         over the five seeds) and results/per_category.csv (precision, recall, F1 per
         category). Macro-F1 and micro-F1 use the categories not listed under
@@ -30,7 +31,6 @@ from listen.thresholds import apply_thresholds, tune_thresholds
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "configs" / "default.yaml"
-GLOVE_PATH = ROOT / "data" / "glove.6B.50d.txt"
 
 
 def build_models(categories, word_vectors, seed):
@@ -72,11 +72,12 @@ def fmt(value, low, high):
 def main():
     with open(CONFIG_PATH, encoding="utf-8") as f:
         config = yaml.safe_load(f)
-    if not GLOVE_PATH.exists():
-        sys.exit(f"Missing {GLOVE_PATH.relative_to(ROOT)} (GloVe vectors for the embedding models).")
+    glove_path = ROOT / config["paths"]["data_dir"] / "glove.6B.50d.txt"
+    if not glove_path.exists():
+        sys.exit(f"Missing {glove_path.relative_to(ROOT)}. Run `make glove` to download it.")
 
     excluded = set(config["evaluation"]["excluded_categories"])
-    word_vectors = load_glove(GLOVE_PATH)
+    word_vectors = load_glove(glove_path)
     results = {}  # (model, seed) -> score() output
     try:
         for seed in config["seeds"]:

@@ -67,7 +67,7 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 
 1. `pip install -r requirements.txt` (installs required libraries)
 2. `make data` (downloads the Learned Hands dataset)
-3. `make results` (fits every model and prints the results table; until the models exist it prints each seed's split sizes and then stops with a "not implemented yet" error, on purpose)
+3. `make results` (fits every model, scores the test part and prints the results table; the first run also downloads the GloVe vectors, about 860 MB, into `data/`; `make glove` fetches them on their own)
 4. `make app` (launches the Streamlit app)
 5. `make test` (optional final check: runs the test suite, and skips the data-backed tests if `data/` is missing)
 
@@ -84,6 +84,7 @@ The train/validation/test split files are already committed in `results/splits/`
 ├── pytest.ini                  test settings (`make test`)
 ├── configs/default.yaml        seeds, split ratios, paths
 ├── scripts/download_data.py
+├── scripts/download_glove.py   GloVe vectors for the embedding models (`make glove`)
 ├── scripts/run_results.py      driver for `make results`
 ├── scripts/make_splits.py      writes and checks the frozen splits (`make splits`)
 ├── src/listen/
