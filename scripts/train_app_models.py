@@ -34,7 +34,7 @@ SEED = 0
 
 def main():
     if not GLOVE_PATH.exists():
-        sys.exit(f"Missing {GLOVE_PATH.relative_to(ROOT)}. Download GloVe 6B and put the 50d file there.")
+        sys.exit(f"Missing {GLOVE_PATH.relative_to(ROOT)}. Run `make glove` to download it.")
 
     split = get_split(SEED)
     word_vectors = load_glove(GLOVE_PATH)

@@ -1,0 +1,501 @@
+model,seed,category,threshold,precision,recall,f1
+class_prior,0,"Accidents, Injuries, and Torts (Problems with Others)",0.2835,0.2807,1.0,0.4384
+class_prior,0,Benefits,0.0206,0.0235,1.0,0.046
+class_prior,0,Civil and Human Rights,0.08,0.0769,1.0,0.1429
+class_prior,0,Court and Lawyers,0.2363,0.2426,1.0,0.3905
+class_prior,0,Crime & Prisons,0.1983,0.2011,1.0,0.3349
+class_prior,0,Disaster Relief,0.5,,,
+class_prior,0,Education,0.02,0.02,1.0,0.0392
+class_prior,0,Environmental Justice,0.0044,0.0059,1.0,0.0118
+class_prior,0,Estates & Wills,0.0422,0.0414,1.0,0.0795
+class_prior,0,Family,0.1385,0.1414,1.0,0.2477
+class_prior,0,Government services,0.0385,0.0414,1.0,0.0795
+class_prior,0,Health,0.0773,0.0758,1.0,0.1408
+class_prior,0,Housing,0.2005,0.1935,1.0,0.3243
+class_prior,0,Immigration,0.0148,0.0178,1.0,0.0349
+class_prior,0,"Money, Debt, and Consumer Issues",0.28,0.284,1.0,0.4424
+class_prior,0,Native American Issues and Tribal Law,0.5,,,
+class_prior,0,Small Business and IP,0.0593,0.0592,1.0,0.1117
+class_prior,0,Traffic and Cars,0.103,0.1042,1.0,0.1887
+class_prior,0,Veterans & Military,0.5,,,
+class_prior,0,Work and Employment,0.1516,0.152,1.0,0.2638
+rules,0,"Accidents, Injuries, and Torts (Problems with Others)",0.0,0.2807,1.0,0.4384
+rules,0,Benefits,0.0,0.0235,1.0,0.046
+rules,0,Civil and Human Rights,1.0,,0.0,0.0
+rules,0,Court and Lawyers,0.0,0.2426,1.0,0.3905
+rules,0,Crime & Prisons,1.0,0.7273,0.2286,0.3478
+rules,0,Disaster Relief,0.5,,,
+rules,0,Education,0.0,0.02,1.0,0.0392
+rules,0,Environmental Justice,0.0,0.0059,1.0,0.0118
+rules,0,Estates & Wills,1.0,1.0,0.4286,0.6
+rules,0,Family,1.0,0.9167,0.4074,0.5641
+rules,0,Government services,0.0,0.0414,1.0,0.0795
+rules,0,Health,1.0,0.5,0.4,0.4444
+rules,0,Housing,1.0,0.8095,0.4722,0.5965
+rules,0,Immigration,1.0,1.0,0.6667,0.8
+rules,0,"Money, Debt, and Consumer Issues",0.0,0.284,1.0,0.4424
+rules,0,Native American Issues and Tribal Law,0.5,,,
+rules,0,Small Business and IP,1.0,1.0,0.2,0.3333
+rules,0,Traffic and Cars,1.0,0.5714,0.2,0.2963
+rules,0,Veterans & Military,0.5,,,
+rules,0,Work and Employment,0.0,0.152,1.0,0.2638
+tfidf,0,"Accidents, Injuries, and Torts (Problems with Others)",0.3163,0.5517,0.6667,0.6038
+tfidf,0,Benefits,0.0288,0.3333,0.25,0.2857
+tfidf,0,Civil and Human Rights,0.1016,0.2,0.0769,0.1111
+tfidf,0,Court and Lawyers,0.2577,0.5,0.5122,0.506
+tfidf,0,Crime & Prisons,0.2324,0.5,0.4286,0.4615
+tfidf,0,Disaster Relief,0.5,,,
+tfidf,0,Education,0.0235,0.4286,0.75,0.5455
+tfidf,0,Environmental Justice,0.0048,0.0,0.0,0.0
+tfidf,0,Estates & Wills,0.0502,0.24,0.8571,0.375
+tfidf,0,Family,0.1549,0.46,0.8519,0.5974
+tfidf,0,Government services,0.044,0.1538,0.2857,0.2
+tfidf,0,Health,0.0983,0.6471,0.7333,0.6875
+tfidf,0,Housing,0.2528,0.7619,0.8889,0.8205
+tfidf,0,Immigration,0.0239,,0.0,0.0
+tfidf,0,"Money, Debt, and Consumer Issues",0.3153,0.7083,0.7083,0.7083
+tfidf,0,Native American Issues and Tribal Law,0.5,,,
+tfidf,0,Small Business and IP,0.0761,0.7,0.7,0.7
+tfidf,0,Traffic and Cars,0.1782,0.7368,0.7,0.7179
+tfidf,0,Veterans & Military,0.5,,,
+tfidf,0,Work and Employment,0.1795,0.8667,0.8387,0.8525
+emb_lr,0,"Accidents, Injuries, and Torts (Problems with Others)",0.3501,0.5652,0.5417,0.5532
+emb_lr,0,Benefits,0.045,0.0,0.0,0.0
+emb_lr,0,Civil and Human Rights,0.132,0.2308,0.2308,0.2308
+emb_lr,0,Court and Lawyers,0.2796,0.48,0.5854,0.5275
+emb_lr,0,Crime & Prisons,0.2995,0.5676,0.6,0.5833
+emb_lr,0,Disaster Relief,0.5,,,
+emb_lr,0,Education,0.0424,0.0,0.0,0.0
+emb_lr,0,Environmental Justice,0.007,0.25,1.0,0.4
+emb_lr,0,Estates & Wills,0.1813,0.5,0.1429,0.2222
+emb_lr,0,Family,0.327,0.6667,0.5185,0.5833
+emb_lr,0,Government services,0.0633,0.0,0.0,0.0
+emb_lr,0,Health,0.1304,0.4615,0.8,0.5854
+emb_lr,0,Housing,0.2432,0.5962,0.8611,0.7045
+emb_lr,0,Immigration,0.0522,,0.0,0.0
+emb_lr,0,"Money, Debt, and Consumer Issues",0.3406,0.5833,0.7292,0.6481
+emb_lr,0,Native American Issues and Tribal Law,0.5,,,
+emb_lr,0,Small Business and IP,0.144,0.7778,0.7,0.7368
+emb_lr,0,Traffic and Cars,0.1455,0.4571,0.8,0.5818
+emb_lr,0,Veterans & Military,0.5,,,
+emb_lr,0,Work and Employment,0.248,0.4444,0.5161,0.4776
+emb_mlp,0,"Accidents, Injuries, and Torts (Problems with Others)",0.266,0.5,0.7083,0.5862
+emb_mlp,0,Benefits,0.3053,0.0,0.0,0.0
+emb_mlp,0,Civil and Human Rights,0.2842,0.1667,0.0769,0.1053
+emb_mlp,0,Court and Lawyers,0.3759,0.5946,0.5366,0.5641
+emb_mlp,0,Crime & Prisons,0.4375,0.6452,0.5714,0.6061
+emb_mlp,0,Disaster Relief,0.5,,,
+emb_mlp,0,Education,0.3573,1.0,0.25,0.4
+emb_mlp,0,Environmental Justice,0.0021,0.0312,1.0,0.0606
+emb_mlp,0,Estates & Wills,0.8717,0.0,0.0,0.0
+emb_mlp,0,Family,0.1557,0.5128,0.7407,0.6061
+emb_mlp,0,Government services,0.1185,0.1,0.1429,0.1176
+emb_mlp,0,Health,0.5711,0.875,0.4667,0.6087
+emb_mlp,0,Housing,0.2569,0.58,0.8056,0.6744
+emb_mlp,0,Immigration,0.3554,0.5,0.3333,0.4
+emb_mlp,0,"Money, Debt, and Consumer Issues",0.3426,0.5714,0.75,0.6486
+emb_mlp,0,Native American Issues and Tribal Law,0.5,,,
+emb_mlp,0,Small Business and IP,0.3113,0.75,0.6,0.6667
+emb_mlp,0,Traffic and Cars,0.2018,0.5,0.8,0.6154
+emb_mlp,0,Veterans & Military,0.5,,,
+emb_mlp,0,Work and Employment,0.2486,0.5294,0.5806,0.5538
+class_prior,1,"Accidents, Injuries, and Torts (Problems with Others)",0.2877,0.2686,1.0,0.4234
+class_prior,1,Benefits,0.0208,0.0231,1.0,0.0452
+class_prior,1,Civil and Human Rights,0.08,0.0756,1.0,0.1405
+class_prior,1,Court and Lawyers,0.2384,0.2384,1.0,0.385
+class_prior,1,Crime & Prisons,0.2018,0.1966,1.0,0.3286
+class_prior,1,Disaster Relief,0.5,,,
+class_prior,1,Education,0.0201,0.0192,1.0,0.0377
+class_prior,1,Environmental Justice,0.0052,0.0,,
+class_prior,1,Estates & Wills,0.0419,0.0407,1.0,0.0782
+class_prior,1,Family,0.1388,0.1327,1.0,0.2342
+class_prior,1,Government services,0.0389,0.0407,1.0,0.0782
+class_prior,1,Health,0.0759,0.0739,1.0,0.1376
+class_prior,1,Housing,0.2007,0.1875,1.0,0.3158
+class_prior,1,Immigration,0.0157,0.0173,1.0,0.0341
+class_prior,1,"Money, Debt, and Consumer Issues",0.2825,0.2674,1.0,0.422
+class_prior,1,Native American Issues and Tribal Law,0.5,,,
+class_prior,1,Small Business and IP,0.0605,0.0581,1.0,0.1099
+class_prior,1,Traffic and Cars,0.1028,0.1042,1.0,0.1887
+class_prior,1,Veterans & Military,0.0015,0.0058,1.0,0.0115
+class_prior,1,Work and Employment,0.1511,0.1594,1.0,0.275
+rules,1,"Accidents, Injuries, and Torts (Problems with Others)",0.0,0.2686,1.0,0.4234
+rules,1,Benefits,0.0,0.0231,1.0,0.0452
+rules,1,Civil and Human Rights,0.0,0.0756,1.0,0.1405
+rules,1,Court and Lawyers,1.0,0.8333,0.122,0.2128
+rules,1,Crime & Prisons,1.0,0.625,0.2857,0.3922
+rules,1,Disaster Relief,0.5,,,
+rules,1,Education,1.0,,0.0,0.0
+rules,1,Environmental Justice,0.0,0.0,,
+rules,1,Estates & Wills,1.0,0.75,0.4286,0.5455
+rules,1,Family,1.0,0.7692,0.3846,0.5128
+rules,1,Government services,0.0,0.0407,1.0,0.0782
+rules,1,Health,1.0,0.6,0.2,0.3
+rules,1,Housing,1.0,0.8571,0.5,0.6316
+rules,1,Immigration,0.0,0.0173,1.0,0.0341
+rules,1,"Money, Debt, and Consumer Issues",0.0,0.2674,1.0,0.422
+rules,1,Native American Issues and Tribal Law,0.5,,,
+rules,1,Small Business and IP,1.0,1.0,0.2,0.3333
+rules,1,Traffic and Cars,1.0,0.6667,0.2,0.3077
+rules,1,Veterans & Military,0.0,0.0058,1.0,0.0115
+rules,1,Work and Employment,1.0,0.7778,0.2121,0.3333
+tfidf,1,"Accidents, Injuries, and Torts (Problems with Others)",0.3383,0.6512,0.5957,0.6222
+tfidf,1,Benefits,0.024,0.2,1.0,0.3333
+tfidf,1,Civil and Human Rights,0.0875,0.1818,0.6154,0.2807
+tfidf,1,Court and Lawyers,0.2479,0.5106,0.5854,0.5455
+tfidf,1,Crime & Prisons,0.2292,0.6061,0.5714,0.5882
+tfidf,1,Disaster Relief,0.5,,,
+tfidf,1,Education,0.0239,0.6667,1.0,0.8
+tfidf,1,Environmental Justice,0.0056,0.0,,
+tfidf,1,Estates & Wills,0.067,0.4,0.2857,0.3333
+tfidf,1,Family,0.2114,0.6452,0.7692,0.7018
+tfidf,1,Government services,0.0426,0.0455,0.1429,0.069
+tfidf,1,Health,0.123,0.5714,0.2667,0.3636
+tfidf,1,Housing,0.2232,0.7556,0.9444,0.8395
+tfidf,1,Immigration,0.0172,0.4,0.6667,0.5
+tfidf,1,"Money, Debt, and Consumer Issues",0.321,0.6364,0.6087,0.6222
+tfidf,1,Native American Issues and Tribal Law,0.5,,,
+tfidf,1,Small Business and IP,0.0904,0.6,0.3,0.4
+tfidf,1,Traffic and Cars,0.1632,0.7895,0.75,0.7692
+tfidf,1,Veterans & Military,0.0015,,0.0,0.0
+tfidf,1,Work and Employment,0.2178,0.9167,0.6667,0.7719
+emb_lr,1,"Accidents, Injuries, and Torts (Problems with Others)",0.3173,0.5362,0.7872,0.6379
+emb_lr,1,Benefits,0.0383,0.1429,0.25,0.1818
+emb_lr,1,Civil and Human Rights,0.0916,0.1429,0.6923,0.2368
+emb_lr,1,Court and Lawyers,0.2327,0.4143,0.7073,0.5225
+emb_lr,1,Crime & Prisons,0.2422,0.4737,0.7714,0.587
+emb_lr,1,Disaster Relief,0.5,,,
+emb_lr,1,Education,0.0536,0.25,0.25,0.25
+emb_lr,1,Environmental Justice,0.0108,0.0,,
+emb_lr,1,Estates & Wills,0.0688,0.1667,0.5714,0.2581
+emb_lr,1,Family,0.2197,0.6364,0.8077,0.7119
+emb_lr,1,Government services,0.0533,0.0526,0.1429,0.0769
+emb_lr,1,Health,0.157,0.6667,0.8,0.7273
+emb_lr,1,Housing,0.2287,0.6531,0.8889,0.7529
+emb_lr,1,Immigration,0.0343,0.25,0.3333,0.2857
+emb_lr,1,"Money, Debt, and Consumer Issues",0.3743,0.6923,0.587,0.6353
+emb_lr,1,Native American Issues and Tribal Law,0.5,,,
+emb_lr,1,Small Business and IP,0.2565,0.5714,0.4,0.4706
+emb_lr,1,Traffic and Cars,0.1919,0.6818,0.75,0.7143
+emb_lr,1,Veterans & Military,0.0014,0.0093,1.0,0.0185
+emb_lr,1,Work and Employment,0.2564,0.4872,0.5758,0.5278
+emb_mlp,1,"Accidents, Injuries, and Torts (Problems with Others)",0.5032,0.6744,0.617,0.6444
+emb_mlp,1,Benefits,0.1218,0.2857,0.5,0.3636
+emb_mlp,1,Civil and Human Rights,0.1197,0.1707,0.5385,0.2593
+emb_mlp,1,Court and Lawyers,0.2948,0.4444,0.5854,0.5053
+emb_mlp,1,Crime & Prisons,0.3542,0.5854,0.6857,0.6316
+emb_mlp,1,Disaster Relief,0.5,,,
+emb_mlp,1,Education,0.6628,0.0,0.0,0.0
+emb_mlp,1,Environmental Justice,0.0,0.0,,
+emb_mlp,1,Estates & Wills,0.5611,0.6667,0.2857,0.4
+emb_mlp,1,Family,0.2801,0.7,0.8077,0.75
+emb_mlp,1,Government services,0.2151,0.0,0.0,0.0
+emb_mlp,1,Health,0.3201,0.6111,0.7333,0.6667
+emb_mlp,1,Housing,0.1961,0.6809,0.8889,0.7711
+emb_mlp,1,Immigration,0.1043,0.3333,0.3333,0.3333
+emb_mlp,1,"Money, Debt, and Consumer Issues",0.405,0.6889,0.6739,0.6813
+emb_mlp,1,Native American Issues and Tribal Law,0.5,,,
+emb_mlp,1,Small Business and IP,0.9024,0.6,0.3,0.4
+emb_mlp,1,Traffic and Cars,0.1143,0.5143,0.9,0.6545
+emb_mlp,1,Veterans & Military,0.0004,0.02,1.0,0.0392
+emb_mlp,1,Work and Employment,0.5575,0.75,0.4545,0.566
+class_prior,2,"Accidents, Injuries, and Torts (Problems with Others)",0.2862,0.2775,1.0,0.4344
+class_prior,2,Benefits,0.0207,0.0233,1.0,0.0455
+class_prior,2,Civil and Human Rights,0.0802,0.0765,1.0,0.1421
+class_prior,2,Court and Lawyers,0.2363,0.2471,1.0,0.3962
+class_prior,2,Crime & Prisons,0.2012,0.1943,1.0,0.3254
+class_prior,2,Disaster Relief,0.5,,,
+class_prior,2,Education,0.0198,0.0206,1.0,0.0404
+class_prior,2,Environmental Justice,0.0045,0.0059,1.0,0.0117
+class_prior,2,Estates & Wills,0.0423,0.0412,1.0,0.0791
+class_prior,2,Family,0.1378,0.151,1.0,0.2624
+class_prior,2,Government services,0.0394,0.0353,1.0,0.0682
+class_prior,2,Health,0.0776,0.07,1.0,0.1308
+class_prior,2,Housing,0.2029,0.1827,1.0,0.309
+class_prior,2,Immigration,0.0156,0.0117,1.0,0.0231
+class_prior,2,"Money, Debt, and Consumer Issues",0.2823,0.2765,1.0,0.4332
+class_prior,2,Native American Issues and Tribal Law,0.5,,,
+class_prior,2,Small Business and IP,0.0594,0.0588,1.0,0.1111
+class_prior,2,Traffic and Cars,0.1038,0.095,1.0,0.1735
+class_prior,2,Veterans & Military,0.5,,0.0,0.0
+class_prior,2,Work and Employment,0.1518,0.1512,1.0,0.2627
+rules,2,"Accidents, Injuries, and Torts (Problems with Others)",0.0,0.2775,1.0,0.4344
+rules,2,Benefits,1.0,0.0,0.0,0.0
+rules,2,Civil and Human Rights,0.0,0.0765,1.0,0.1421
+rules,2,Court and Lawyers,0.0,0.2471,1.0,0.3962
+rules,2,Crime & Prisons,0.0,0.1943,1.0,0.3254
+rules,2,Disaster Relief,0.5,,,
+rules,2,Education,0.0,0.0206,1.0,0.0404
+rules,2,Environmental Justice,0.0,0.0059,1.0,0.0117
+rules,2,Estates & Wills,0.0,0.0412,1.0,0.0791
+rules,2,Family,1.0,0.8421,0.5517,0.6667
+rules,2,Government services,0.0,0.0353,1.0,0.0682
+rules,2,Health,1.0,0.4286,0.4286,0.4286
+rules,2,Housing,1.0,0.8667,0.3611,0.5098
+rules,2,Immigration,1.0,,0.0,0.0
+rules,2,"Money, Debt, and Consumer Issues",0.0,0.2765,1.0,0.4332
+rules,2,Native American Issues and Tribal Law,0.5,,,
+rules,2,Small Business and IP,1.0,1.0,0.1,0.1818
+rules,2,Traffic and Cars,1.0,0.75,0.3158,0.4444
+rules,2,Veterans & Military,0.5,,0.0,0.0
+rules,2,Work and Employment,1.0,0.5,0.0968,0.1622
+tfidf,2,"Accidents, Injuries, and Torts (Problems with Others)",0.3693,0.7222,0.5417,0.619
+tfidf,2,Benefits,0.0264,0.1818,0.5,0.2667
+tfidf,2,Civil and Human Rights,0.1002,0.3333,0.0769,0.125
+tfidf,2,Court and Lawyers,0.2493,0.5714,0.7619,0.6531
+tfidf,2,Crime & Prisons,0.2818,0.75,0.5294,0.6207
+tfidf,2,Disaster Relief,0.5,,,
+tfidf,2,Education,0.0261,1.0,0.5,0.6667
+tfidf,2,Environmental Justice,0.0047,0.1667,1.0,0.2857
+tfidf,2,Estates & Wills,0.0752,0.4,0.2857,0.3333
+tfidf,2,Family,0.2347,0.7407,0.6897,0.7143
+tfidf,2,Government services,0.0442,0.0,0.0,0.0
+tfidf,2,Health,0.1056,0.6429,0.6429,0.6429
+tfidf,2,Housing,0.2488,0.7632,0.8056,0.7838
+tfidf,2,Immigration,0.0257,,0.0,0.0
+tfidf,2,"Money, Debt, and Consumer Issues",0.293,0.6393,0.8298,0.7222
+tfidf,2,Native American Issues and Tribal Law,0.5,,,
+tfidf,2,Small Business and IP,0.0897,1.0,0.1,0.1818
+tfidf,2,Traffic and Cars,0.1695,0.619,0.6842,0.65
+tfidf,2,Veterans & Military,0.5,,0.0,0.0
+tfidf,2,Work and Employment,0.208,1.0,0.7419,0.8519
+emb_lr,2,"Accidents, Injuries, and Torts (Problems with Others)",0.4114,0.7105,0.5625,0.6279
+emb_lr,2,Benefits,0.0749,,0.0,0.0
+emb_lr,2,Civil and Human Rights,0.1679,0.25,0.1538,0.1905
+emb_lr,2,Court and Lawyers,0.2692,0.5185,0.6667,0.5833
+emb_lr,2,Crime & Prisons,0.3268,0.6818,0.8824,0.7692
+emb_lr,2,Disaster Relief,0.5,,,
+emb_lr,2,Education,0.0471,0.3333,0.25,0.2857
+emb_lr,2,Environmental Justice,0.014,,0.0,0.0
+emb_lr,2,Estates & Wills,0.0895,0.2174,0.7143,0.3333
+emb_lr,2,Family,0.2026,0.5333,0.8276,0.6486
+emb_lr,2,Government services,0.0617,0.0,0.0,0.0
+emb_lr,2,Health,0.1807,0.7143,0.7143,0.7143
+emb_lr,2,Housing,0.3182,0.6216,0.6389,0.6301
+emb_lr,2,Immigration,0.0446,0.0,0.0,0.0
+emb_lr,2,"Money, Debt, and Consumer Issues",0.3088,0.6102,0.766,0.6792
+emb_lr,2,Native American Issues and Tribal Law,0.5,,,
+emb_lr,2,Small Business and IP,0.1709,0.6,0.6,0.6
+emb_lr,2,Traffic and Cars,0.2356,0.6522,0.7895,0.7143
+emb_lr,2,Veterans & Military,0.5,,0.0,0.0
+emb_lr,2,Work and Employment,0.2899,0.6818,0.4839,0.566
+emb_mlp,2,"Accidents, Injuries, and Torts (Problems with Others)",0.2675,0.5,0.7083,0.5862
+emb_mlp,2,Benefits,0.5964,0.0,0.0,0.0
+emb_mlp,2,Civil and Human Rights,0.2709,0.1538,0.1538,0.1538
+emb_mlp,2,Court and Lawyers,0.4122,0.6,0.5,0.5455
+emb_mlp,2,Crime & Prisons,0.5651,0.7059,0.7059,0.7059
+emb_mlp,2,Disaster Relief,0.5,,,
+emb_mlp,2,Education,0.7521,,0.0,0.0
+emb_mlp,2,Environmental Justice,0.1932,,0.0,0.0
+emb_mlp,2,Estates & Wills,0.6291,1.0,0.2857,0.4444
+emb_mlp,2,Family,0.4962,0.6538,0.5862,0.6182
+emb_mlp,2,Government services,0.2154,0.0,0.0,0.0
+emb_mlp,2,Health,0.2944,0.6923,0.6429,0.6667
+emb_mlp,2,Housing,0.5911,0.7576,0.6944,0.7246
+emb_mlp,2,Immigration,0.594,1.0,1.0,1.0
+emb_mlp,2,"Money, Debt, and Consumer Issues",0.2034,0.5417,0.8298,0.6555
+emb_mlp,2,Native American Issues and Tribal Law,0.5,,,
+emb_mlp,2,Small Business and IP,0.7069,0.75,0.3,0.4286
+emb_mlp,2,Traffic and Cars,0.6054,0.5789,0.5789,0.5789
+emb_mlp,2,Veterans & Military,0.5,,0.0,0.0
+emb_mlp,2,Work and Employment,0.3169,0.5833,0.6774,0.6269
+class_prior,3,"Accidents, Injuries, and Torts (Problems with Others)",0.2858,0.2743,1.0,0.4305
+class_prior,3,Benefits,0.0208,0.0225,1.0,0.044
+class_prior,3,Civil and Human Rights,0.0799,0.08,1.0,0.1481
+class_prior,3,Court and Lawyers,0.2373,0.2343,1.0,0.3796
+class_prior,3,Crime & Prisons,0.1997,0.1977,1.0,0.3302
+class_prior,3,Disaster Relief,0.5,,,
+class_prior,3,Education,0.0199,0.0205,1.0,0.0402
+class_prior,3,Environmental Justice,0.0045,0.0057,1.0,0.0114
+class_prior,3,Estates & Wills,0.0425,0.04,1.0,0.0769
+class_prior,3,Family,0.1381,0.1421,1.0,0.2489
+class_prior,3,Government services,0.0381,0.04,1.0,0.0769
+class_prior,3,Health,0.0763,0.0769,1.0,0.1429
+class_prior,3,Housing,0.2004,0.1958,1.0,0.3274
+class_prior,3,Immigration,0.0157,0.0114,1.0,0.0226
+class_prior,3,"Money, Debt, and Consumer Issues",0.2821,0.2743,1.0,0.4305
+class_prior,3,Native American Issues and Tribal Law,0.5,,,
+class_prior,3,Small Business and IP,0.0582,0.0686,1.0,0.1283
+class_prior,3,Traffic and Cars,0.1037,0.099,1.0,0.1802
+class_prior,3,Veterans & Military,0.5,,0.0,0.0
+class_prior,3,Work and Employment,0.1516,0.1546,1.0,0.2678
+rules,3,"Accidents, Injuries, and Torts (Problems with Others)",0.0,0.2743,1.0,0.4305
+rules,3,Benefits,0.0,0.0225,1.0,0.044
+rules,3,Civil and Human Rights,0.0,0.08,1.0,0.1481
+rules,3,Court and Lawyers,0.0,0.2343,1.0,0.3796
+rules,3,Crime & Prisons,1.0,0.5556,0.1429,0.2273
+rules,3,Disaster Relief,0.5,,,
+rules,3,Education,0.0,0.0205,1.0,0.0402
+rules,3,Environmental Justice,0.0,0.0057,1.0,0.0114
+rules,3,Estates & Wills,1.0,0.8333,0.7143,0.7692
+rules,3,Family,1.0,0.9167,0.3929,0.55
+rules,3,Government services,0.0,0.04,1.0,0.0769
+rules,3,Health,1.0,0.1111,0.0625,0.08
+rules,3,Housing,1.0,1.0,0.3514,0.52
+rules,3,Immigration,1.0,,0.0,0.0
+rules,3,"Money, Debt, and Consumer Issues",0.0,0.2743,1.0,0.4305
+rules,3,Native American Issues and Tribal Law,0.5,,,
+rules,3,Small Business and IP,1.0,1.0,0.5833,0.7368
+rules,3,Traffic and Cars,1.0,1.0,0.25,0.4
+rules,3,Veterans & Military,0.5,,0.0,0.0
+rules,3,Work and Employment,0.0,0.1546,1.0,0.2678
+tfidf,3,"Accidents, Injuries, and Torts (Problems with Others)",0.3007,0.5667,0.7083,0.6296
+tfidf,3,Benefits,0.0286,0.0,0.0,0.0
+tfidf,3,Civil and Human Rights,0.0971,0.5,0.3571,0.4167
+tfidf,3,Court and Lawyers,0.2488,0.5417,0.6341,0.5843
+tfidf,3,Crime & Prisons,0.2391,0.8148,0.6286,0.7097
+tfidf,3,Disaster Relief,0.5,,,
+tfidf,3,Education,0.0274,0.6667,0.5,0.5714
+tfidf,3,Environmental Justice,0.0045,0.0,0.0,0.0
+tfidf,3,Estates & Wills,0.0697,0.375,0.4286,0.4
+tfidf,3,Family,0.2176,0.8846,0.8214,0.8519
+tfidf,3,Government services,0.0461,,0.0,0.0
+tfidf,3,Health,0.0971,0.5833,0.4375,0.5
+tfidf,3,Housing,0.2448,0.9615,0.6757,0.7937
+tfidf,3,Immigration,0.0189,1.0,0.5,0.6667
+tfidf,3,"Money, Debt, and Consumer Issues",0.2741,0.5429,0.7917,0.6441
+tfidf,3,Native American Issues and Tribal Law,0.5,,,
+tfidf,3,Small Business and IP,0.0808,0.9091,0.8333,0.8696
+tfidf,3,Traffic and Cars,0.185,0.8125,0.65,0.7222
+tfidf,3,Veterans & Military,0.5,,0.0,0.0
+tfidf,3,Work and Employment,0.1885,0.9286,0.8125,0.8667
+emb_lr,3,"Accidents, Injuries, and Torts (Problems with Others)",0.4153,0.6667,0.5833,0.6222
+emb_lr,3,Benefits,0.0273,0.1,1.0,0.1818
+emb_lr,3,Civil and Human Rights,0.0763,0.1918,1.0,0.3218
+emb_lr,3,Court and Lawyers,0.277,0.5128,0.4878,0.5
+emb_lr,3,Crime & Prisons,0.3149,0.6562,0.6,0.6269
+emb_lr,3,Disaster Relief,0.5,,,
+emb_lr,3,Education,0.043,0.2857,0.5,0.3636
+emb_lr,3,Environmental Justice,0.0073,0.0714,1.0,0.1333
+emb_lr,3,Estates & Wills,0.0476,0.1136,0.7143,0.1961
+emb_lr,3,Family,0.1961,0.6579,0.8929,0.7576
+emb_lr,3,Government services,0.0616,0.0769,0.1429,0.1
+emb_lr,3,Health,0.1374,0.5238,0.6875,0.5946
+emb_lr,3,Housing,0.2556,0.7368,0.7568,0.7467
+emb_lr,3,Immigration,0.03,0.1111,0.5,0.1818
+emb_lr,3,"Money, Debt, and Consumer Issues",0.4207,0.6154,0.5,0.5517
+emb_lr,3,Native American Issues and Tribal Law,0.5,,,
+emb_lr,3,Small Business and IP,0.1996,0.6667,0.8333,0.7407
+emb_lr,3,Traffic and Cars,0.1844,0.625,0.75,0.6818
+emb_lr,3,Veterans & Military,0.5,,0.0,0.0
+emb_lr,3,Work and Employment,0.3053,0.7037,0.5938,0.6441
+emb_mlp,3,"Accidents, Injuries, and Torts (Problems with Others)",0.2499,0.5526,0.875,0.6774
+emb_mlp,3,Benefits,0.089,0.1667,0.5,0.25
+emb_mlp,3,Civil and Human Rights,0.1581,0.2593,0.5,0.3415
+emb_mlp,3,Court and Lawyers,0.1913,0.3731,0.6098,0.463
+emb_mlp,3,Crime & Prisons,0.425,0.7097,0.6286,0.6667
+emb_mlp,3,Disaster Relief,0.5,,,
+emb_mlp,3,Education,0.4526,0.6667,0.5,0.5714
+emb_mlp,3,Environmental Justice,0.0102,0.1,1.0,0.1818
+emb_mlp,3,Estates & Wills,0.1532,0.2,0.4286,0.2727
+emb_mlp,3,Family,0.2819,0.6471,0.7857,0.7097
+emb_mlp,3,Government services,0.115,0.0,0.0,0.0
+emb_mlp,3,Health,0.3158,0.5714,0.5,0.5333
+emb_mlp,3,Housing,0.2788,0.8182,0.7297,0.7714
+emb_mlp,3,Immigration,0.1241,0.2,0.5,0.2857
+emb_mlp,3,"Money, Debt, and Consumer Issues",0.3189,0.5167,0.6458,0.5741
+emb_mlp,3,Native American Issues and Tribal Law,0.5,,,
+emb_mlp,3,Small Business and IP,0.5433,0.7273,0.6667,0.6957
+emb_mlp,3,Traffic and Cars,0.5998,0.6667,0.5,0.5714
+emb_mlp,3,Veterans & Military,0.5,,0.0,0.0
+emb_mlp,3,Work and Employment,0.4883,0.76,0.5938,0.6667
+class_prior,4,"Accidents, Injuries, and Torts (Problems with Others)",0.2827,0.2917,1.0,0.4516
+class_prior,4,Benefits,0.022,0.018,1.0,0.0353
+class_prior,4,Civil and Human Rights,0.0789,0.0778,1.0,0.1444
+class_prior,4,Court and Lawyers,0.2358,0.2395,1.0,0.3865
+class_prior,4,Crime & Prisons,0.1991,0.2012,1.0,0.335
+class_prior,4,Disaster Relief,0.0007,0.0055,1.0,0.011
+class_prior,4,Education,0.02,0.0195,1.0,0.0383
+class_prior,4,Environmental Justice,0.0044,0.006,1.0,0.0119
+class_prior,4,Estates & Wills,0.0413,0.0419,1.0,0.0805
+class_prior,4,Family,0.1376,0.1405,1.0,0.2464
+class_prior,4,Government services,0.0376,0.0419,1.0,0.0805
+class_prior,4,Health,0.0764,0.0743,1.0,0.1382
+class_prior,4,Housing,0.1985,0.2044,1.0,0.3394
+class_prior,4,Immigration,0.0162,0.012,1.0,0.0237
+class_prior,4,"Money, Debt, and Consumer Issues",0.2778,0.2874,1.0,0.4465
+class_prior,4,Native American Issues and Tribal Law,0.5,,,
+class_prior,4,Small Business and IP,0.0582,0.0599,1.0,0.113
+class_prior,4,Traffic and Cars,0.1022,0.1053,1.0,0.1905
+class_prior,4,Veterans & Military,0.5,,,
+class_prior,4,Work and Employment,0.1504,0.1569,1.0,0.2712
+rules,4,"Accidents, Injuries, and Torts (Problems with Others)",0.0,0.2917,1.0,0.4516
+rules,4,Benefits,1.0,0.5,0.3333,0.4
+rules,4,Civil and Human Rights,0.0,0.0778,1.0,0.1444
+rules,4,Court and Lawyers,0.0,0.2395,1.0,0.3865
+rules,4,Crime & Prisons,0.0,0.2012,1.0,0.335
+rules,4,Disaster Relief,0.0,0.0055,1.0,0.011
+rules,4,Education,0.0,0.0195,1.0,0.0383
+rules,4,Environmental Justice,0.0,0.006,1.0,0.0119
+rules,4,Estates & Wills,1.0,1.0,0.2857,0.4444
+rules,4,Family,1.0,0.9,0.3462,0.5
+rules,4,Government services,0.0,0.0419,1.0,0.0805
+rules,4,Health,1.0,0.3077,0.2667,0.2857
+rules,4,Housing,1.0,0.875,0.3784,0.5283
+rules,4,Immigration,1.0,,0.0,0.0
+rules,4,"Money, Debt, and Consumer Issues",0.0,0.2874,1.0,0.4465
+rules,4,Native American Issues and Tribal Law,0.5,,,
+rules,4,Small Business and IP,1.0,1.0,0.4,0.5714
+rules,4,Traffic and Cars,0.0,0.1053,1.0,0.1905
+rules,4,Veterans & Military,0.5,,,
+rules,4,Work and Employment,0.0,0.1569,1.0,0.2712
+tfidf,4,"Accidents, Injuries, and Torts (Problems with Others)",0.2819,0.5065,0.7959,0.619
+tfidf,4,Benefits,0.0271,0.125,0.3333,0.1818
+tfidf,4,Civil and Human Rights,0.0813,0.2083,0.7692,0.3279
+tfidf,4,Court and Lawyers,0.2708,0.6774,0.525,0.5915
+tfidf,4,Crime & Prisons,0.208,0.6316,0.7059,0.6667
+tfidf,4,Disaster Relief,0.0007,0.0,0.0,0.0
+tfidf,4,Education,0.026,1.0,0.5,0.6667
+tfidf,4,Environmental Justice,0.0044,0.0154,1.0,0.0303
+tfidf,4,Estates & Wills,0.0705,0.5,0.5714,0.5333
+tfidf,4,Family,0.2131,0.6061,0.7692,0.678
+tfidf,4,Government services,0.0412,0.0,0.0,0.0
+tfidf,4,Health,0.1019,0.5833,0.4667,0.5185
+tfidf,4,Housing,0.2376,0.7436,0.7838,0.7632
+tfidf,4,Immigration,0.0203,0.3333,0.5,0.4
+tfidf,4,"Money, Debt, and Consumer Issues",0.2955,0.6557,0.8333,0.7339
+tfidf,4,Native American Issues and Tribal Law,0.5,,,
+tfidf,4,Small Business and IP,0.0826,0.5,0.2,0.2857
+tfidf,4,Traffic and Cars,0.1416,0.7727,0.85,0.8095
+tfidf,4,Veterans & Military,0.5,,,
+tfidf,4,Work and Employment,0.1761,0.7812,0.7812,0.7812
+emb_lr,4,"Accidents, Injuries, and Torts (Problems with Others)",0.4178,0.6889,0.6327,0.6596
+emb_lr,4,Benefits,0.0561,,0.0,0.0
+emb_lr,4,Civil and Human Rights,0.1401,0.2143,0.2308,0.2222
+emb_lr,4,Court and Lawyers,0.2881,0.6429,0.675,0.6585
+emb_lr,4,Crime & Prisons,0.2698,0.6452,0.5882,0.6154
+emb_lr,4,Disaster Relief,0.0008,0.0556,1.0,0.1053
+emb_lr,4,Education,0.0605,1.0,0.25,0.4
+emb_lr,4,Environmental Justice,0.0074,0.0909,1.0,0.1667
+emb_lr,4,Estates & Wills,0.0758,0.2941,0.7143,0.4167
+emb_lr,4,Family,0.2949,0.5172,0.5769,0.5455
+emb_lr,4,Government services,0.0509,0.0769,0.1429,0.1
+emb_lr,4,Health,0.2055,0.4286,0.2,0.2727
+emb_lr,4,Housing,0.1854,0.5517,0.8649,0.6737
+emb_lr,4,Immigration,0.0265,0.1667,1.0,0.2857
+emb_lr,4,"Money, Debt, and Consumer Issues",0.36,0.5818,0.6667,0.6214
+emb_lr,4,Native American Issues and Tribal Law,0.5,,,
+emb_lr,4,Small Business and IP,0.1246,0.4286,0.9,0.5806
+emb_lr,4,Traffic and Cars,0.1946,0.6667,0.6,0.6316
+emb_lr,4,Veterans & Military,0.5,,,
+emb_lr,4,Work and Employment,0.221,0.4884,0.6562,0.56
+emb_mlp,4,"Accidents, Injuries, and Torts (Problems with Others)",0.3559,0.55,0.6735,0.6055
+emb_mlp,4,Benefits,0.3576,0.5,0.3333,0.4
+emb_mlp,4,Civil and Human Rights,0.3782,0.0,0.0,0.0
+emb_mlp,4,Court and Lawyers,0.3908,0.6562,0.525,0.5833
+emb_mlp,4,Crime & Prisons,0.4958,0.8824,0.4412,0.5882
+emb_mlp,4,Disaster Relief,0.0003,0.0,0.0,0.0
+emb_mlp,4,Education,0.8267,,0.0,0.0
+emb_mlp,4,Environmental Justice,0.0,0.0065,1.0,0.0128
+emb_mlp,4,Estates & Wills,0.6736,1.0,0.2857,0.4444
+emb_mlp,4,Family,0.2837,0.5263,0.7692,0.625
+emb_mlp,4,Government services,0.0087,0.0508,0.8571,0.096
+emb_mlp,4,Health,0.1309,0.4138,0.8,0.5455
+emb_mlp,4,Housing,0.1788,0.6522,0.8108,0.7229
+emb_mlp,4,Immigration,0.0146,0.08,1.0,0.1481
+emb_mlp,4,"Money, Debt, and Consumer Issues",0.3385,0.5692,0.7708,0.6549
+emb_mlp,4,Native American Issues and Tribal Law,0.5,,,
+emb_mlp,4,Small Business and IP,0.8588,1.0,0.5,0.6667
+emb_mlp,4,Traffic and Cars,0.1071,0.4688,0.75,0.5769
+emb_mlp,4,Veterans & Military,0.5,,,
+emb_mlp,4,Work and Employment,0.5266,0.6522,0.4688,0.5455
