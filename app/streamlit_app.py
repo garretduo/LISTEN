@@ -91,16 +91,17 @@ STAND_IN_THRESHOLD = 0.5
 def load_model(key):
     """Return (model, thresholds, is_stand_in) for a model key.
 
-    ASSUMPTION to confirm with Sohum: each trained model is saved as
-    artifacts/<key>_0.joblib holding {"model": ..., "thresholds": ...}.
-    Until that file exists, the app falls back to the stand-in.
+    Trained models are saved by scripts/train_app_models.py as
+    artifacts/app/<key>.joblib. Until that file exists, the app uses the stand-in.
     """
-    path = ROOT / "artifacts" / f"{key}_0.joblib"
+    path = ROOT / "artifacts" / "app" / f"{key}.joblib"
     if path.exists():
         import joblib
 
         bundle = joblib.load(path)
-        return bundle["model"], np.asarray(bundle["thresholds"]), False
+        if bundle["categories"] != CATEGORIES:
+            raise ValueError(f"{path.name} has different categories from the app's CATEGORIES list.")
+        return bundle["model"], bundle["thresholds"], False
     return StandInModel(len(CATEGORIES)), np.full(len(CATEGORIES), STAND_IN_THRESHOLD), True
 
 def explain(model, text, category):
@@ -189,6 +190,7 @@ if result:
             st.markdown(f"- {question}")
 
     st.subheader("Possible categories")
+    st.caption("Each category has its own cutoff, so a lower bar can still be marked likely.")
     for i in top:
         if probs[i] >= thresholds[i]:
             st.markdown(f"**{CATEGORIES[i]}** · likely")
