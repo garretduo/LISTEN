@@ -21,28 +21,60 @@ ASSUMED MODEL INTERFACE -- confirm with Sohum and Garret, then adjust load_model
 
 import argparse
 import hashlib
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT / "src"))
 PAIRS_FILE = REPO_ROOT / "analysis" / "minimal_pairs.csv"
 RESULTS_DIR = REPO_ROOT / "results"
 
-# Placeholder category names, used only by the stand-in model. Replace with the
-# real CATEGORIES list from src/listen/data.py once Garret's loader lands.
-PLACEHOLDER_CATEGORIES = [
-    "housing", "employment", "family", "consumer", "money_debt", "torts",
-    "traffic", "criminal", "immigration", "benefits", "estates", "education",
-    "health", "business", "courts", "government", "disaster", "environment",
-    "public_rights", "other",
+# The 20 categories in file order (docs/data_notes.md). Used by the stand-in model and
+# for saved models that do not store their category names.
+CATEGORIES = [
+    "Accidents, Injuries, and Torts (Problems with Others)",
+    "Benefits",
+    "Civil and Human Rights",
+    "Court and Lawyers",
+    "Crime & Prisons",
+    "Disaster Relief",
+    "Education",
+    "Environmental Justice",
+    "Estates & Wills",
+    "Family",
+    "Government services",
+    "Health",
+    "Housing",
+    "Immigration",
+    "Money, Debt, and Consumer Issues",
+    "Native American Issues and Tribal Law",
+    "Small Business and IP",
+    "Traffic and Cars",
+    "Veterans & Military",
+    "Work and Employment",
 ]
 
-# If the real category names differ from the names in minimal_pairs.csv,
-# map them here, e.g. {"money_debt": "Money, debt and consumer finance"}.
-CATEGORY_ALIASES = {}
-
+# Short names used in minimal_pairs.csv -> the real category names.
+# "consumer" and "money_debt" both map to one LIST category.
+CATEGORY_ALIASES = {
+    "housing": "Housing",
+    "employment": "Work and Employment",
+    "family": "Family",
+    "consumer": "Money, Debt, and Consumer Issues",
+    "money_debt": "Money, Debt, and Consumer Issues",
+    "torts": "Accidents, Injuries, and Torts (Problems with Others)",
+    "traffic": "Traffic and Cars",
+    "criminal": "Crime & Prisons",
+    "immigration": "Immigration",
+    "benefits": "Benefits",
+    "estates": "Estates & Wills",
+    "education": "Education",
+    "health": "Health",
+    "business": "Small Business and IP",
+}
 
 class StandInModel:
     """Fake model that returns fixed pseudo-random probabilities for each text.
@@ -52,7 +84,7 @@ class StandInModel:
     """
 
     def __init__(self):
-        self.categories = PLACEHOLDER_CATEGORIES
+        self.categories = CATEGORIES
         self.thresholds = np.full(len(self.categories), 0.5)
 
     def predict_proba(self, texts):
@@ -64,13 +96,17 @@ class StandInModel:
 
 
 def load_model(path):
-    """Load a saved model. Adjust this function if the agreed interface differs."""
+    """Load a saved model file.
+
+    Handles the files saved by scripts/train_app_models.py and scripts/run_results.py:
+    a dictionary holding the model, its thresholds and (sometimes) the category names.
+    """
     import joblib
 
-    model = joblib.load(path)
-    if not hasattr(model, "thresholds"):
-        print("Warning: model has no thresholds; using 0.5 for every category.")
-        model.thresholds = np.full(len(model.categories), 0.5)
+    bundle = joblib.load(path)
+    model = bundle["model"]
+    model.thresholds = np.asarray(bundle["thresholds"])
+    model.categories = bundle.get("categories", CATEGORIES)
     return model
 
 
