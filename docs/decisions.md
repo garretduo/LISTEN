@@ -125,3 +125,13 @@ Labeled positive stories per part, written train/val/test (measured 2026-11-13 o
 - A model with constant scores (the class prior) gets a tuned threshold that predicts every category for every story, because that maximizes F1 for it. Its F1 is a reference floor, not a bug.
 
 **Changing it safely.** A different excluded list or minimum count changes every headline number, so log it here and re-run all five models.
+
+## 2026-11-14: the MLP trains for 1,500 steps
+
+**Decision.** `EmbeddingMLP` trains for 1,500 full-batch steps instead of 30. Nothing else about it changes (same features, 32 hidden units, learning rate 0.01).
+
+**Why.** At 30 steps the network had not finished learning: validation macro-F1 was 0.27, about the class prior's 0.21, while logistic regression on the same features scored 0.60 to 0.63. Training loss was still high, so more data was not the limit. A sweep on the validation part (seeds 0 to 2, mean) gave validation macro-F1 of 0.27 at 30 steps, 0.54 at 300, 0.63 at 1,000, 0.635 at 1,500, 0.625 at 3,000 and 0.60 at 12,000. Validation loss is lowest at 1,000 to 1,500 steps and rises after that while training loss keeps falling, which is overfitting. So the step count was picked on validation, and test was not used.
+
+**Caveats.** The logistic regressions run on scikit-learn defaults and were not tuned, while the MLP's step count was tuned on validation. This slightly favors the MLP. Say so when reporting.
+
+**Changing it safely.** Any later change to a model's settings changes the headline numbers, so log it here and re-run all five models. The test part was scored once after this change.

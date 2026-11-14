@@ -10,7 +10,7 @@ from .embedding_lr import AverageWordVectors
 class EmbeddingMLP(MultiLabelModel):
     """Train a small neural network using only known labels."""
 
-    def __init__(self, word_vectors, hidden_size=32, epochs=30, seed=0):
+    def __init__(self, word_vectors, hidden_size=32, epochs=1500, seed=0):
         self.vectorizer = AverageWordVectors(word_vectors)
         self.hidden_size = hidden_size
         self.epochs = epochs
