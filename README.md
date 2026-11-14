@@ -43,6 +43,16 @@ Our proposed model is Model 5.
 
 We split 80/10/10 at the story level with iterative stratification, keep near-duplicate stories in the same part so a story and its copy never land on opposite sides of the train/test line, and repeat with five seeds. The splits are frozen as id lists in `results/splits/`, so every teammate trains and tests on identical stories (see `docs/using_splits.md`). The rarest categories cannot appear in every part: in the best-guess file Disaster Relief has 3 positive stories, Veterans & Military 4, Environmental Justice 8, and Native American Issues none (counts in `docs/data_notes.md`), so their validation or test parts can have no positives at all. The test set is touched once, after all model choices are frozen. We tune one threshold per category on the validation split to maximize F1. The headline metric is macro-F1, averaged over the 16 categories with at least 10 positive stories, so every model and seed is scored on the same set (`docs/decisions.md`; the other four still appear per category). We also report micro-F1, per-category precision, recall and F1, recall at 3, and 95% bootstrap confidence intervals over stories. We do not use per-label accuracy, because most categories are absent from most stories and predicting nothing scores high.
 
+### Error labeling
+
+After the final test run, we label why TF-IDF got 100 of its mistakes wrong. A mistake is one story and category where its guess disagrees with a known label. The causes are listed in `analysis/causes.py`; settle that list before labeling.
+
+1. `python analysis/sample_mistakes.py` picks the 100 (half missed, half false alarms) and writes `mistake_sample.csv` into `analysis/`. It has ids only, so it can be committed. The first 30 are labeled by everyone, and the other 70 are split between the three of us.
+2. `python analysis/make_label_sheets.py` writes one sheet per person under `artifacts/label_sheets/`. The sheets contain story text, so keep them out of git and off outside services.
+3. Fill in the `cause` column, then run `python analysis/agreement.py` on the sheets to get Cohen's and Fleiss' kappa for the shared 30.
+
+`--part val` on the first two scripts runs the same steps on the development run, for trying them out without the test part.
+
 ### Partially labeled stories
   
 In the 95%-confidence files, a label is omitted when the crowd's agreement interval straddles 50%. We treat an omitted cell as unknown, not negative. Let $m_{ic} = 1$ if story $i$ has a label for category $c$ and $0$ if the cell is omitted. The network's loss counts only labeled cells:
@@ -98,7 +108,7 @@ The train/validation/test split files are already committed in `results/splits/`
 │   └── explain.py              word contributions and occlusion
 ├── tests/                      cleaning, splits, data loading, doc examples
 ├── app/streamlit_app.py
-├── analysis/                   error-labeling sheet, minimal pairs
+├── analysis/                   error labeling (sample_mistakes, make_label_sheets, agreement), minimal pairs
 ├── docs/                       decisions.md, data_notes.md, using_splits.md
 ├── results/                    small tables only
 │   └── splits/                 frozen train/val/test id lists (ids only)
