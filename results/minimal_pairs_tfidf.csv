@@ -1,0 +1,51 @@
+pair_id,intended_category,top1_lay,top1_legal,top1_flip,p_intended_lay,p_intended_legal,intended_delta,intended_flip
+mp01,housing,"Money, Debt, and Consumer Issues",Housing,True,0.2981,0.4302,0.1321,False
+mp02,housing,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.2893,0.2846,-0.0047,False
+mp03,housing,Housing,Housing,False,0.3504,0.3208,-0.0296,False
+mp04,housing,Housing,Housing,False,0.3848,0.2757,-0.1091,False
+mp05,housing,"Money, Debt, and Consumer Issues",Housing,True,0.2357,0.3694,0.1337,True
+mp06,housing,Housing,Housing,False,0.4913,0.5857,0.0944,False
+mp07,housing,Housing,Housing,False,0.2965,0.3747,0.0781,False
+mp08,housing,Housing,Housing,False,0.4251,0.3767,-0.0484,False
+mp09,employment,Work and Employment,Work and Employment,False,0.4582,0.4925,0.0344,False
+mp10,employment,Work and Employment,"Accidents, Injuries, and Torts (Problems with Others)",True,0.273,0.1939,-0.0791,False
+mp11,employment,"Money, Debt, and Consumer Issues","Accidents, Injuries, and Torts (Problems with Others)",True,0.1936,0.193,-0.0006,False
+mp12,employment,Work and Employment,Work and Employment,False,0.3186,0.3881,0.0695,False
+mp13,employment,"Accidents, Injuries, and Torts (Problems with Others)",Work and Employment,True,0.2051,0.3158,0.1106,False
+mp14,employment,Work and Employment,Work and Employment,False,0.3381,0.3067,-0.0314,False
+mp15,employment,Work and Employment,Work and Employment,False,0.2753,0.3392,0.0639,False
+mp16,family,"Money, Debt, and Consumer Issues",Court and Lawyers,True,0.2415,0.2578,0.0163,False
+mp17,family,"Money, Debt, and Consumer Issues",Family,True,0.1517,0.3719,0.2202,True
+mp18,family,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.1962,0.1717,-0.0245,False
+mp19,family,Court and Lawyers,Court and Lawyers,False,0.2776,0.2658,-0.0118,False
+mp20,family,Family,Family,False,0.2745,0.3017,0.0271,False
+mp21,family,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.2309,0.2136,-0.0173,False
+mp22,consumer,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.4047,0.376,-0.0287,False
+mp23,consumer,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.3371,0.4373,0.1002,False
+mp24,consumer,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.3096,0.2774,-0.0322,False
+mp25,consumer,"Accidents, Injuries, and Torts (Problems with Others)","Money, Debt, and Consumer Issues",True,0.2558,0.2917,0.0359,False
+mp26,consumer,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.3067,0.272,-0.0346,False
+mp27,money_debt,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.3471,0.427,0.0799,False
+mp28,money_debt,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.2851,0.2773,-0.0078,False
+mp29,money_debt,"Money, Debt, and Consumer Issues",Court and Lawyers,True,0.229,0.2151,-0.0139,False
+mp30,money_debt,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.3931,0.3491,-0.0441,False
+mp31,money_debt,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.4292,0.3546,-0.0746,False
+mp32,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.2766,0.2178,-0.0588,False
+mp33,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.3735,0.4044,0.031,False
+mp34,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.2887,0.2623,-0.0264,False
+mp35,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.3633,0.3466,-0.0167,False
+mp36,traffic,Court and Lawyers,Court and Lawyers,False,0.2657,0.177,-0.0887,True
+mp37,traffic,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.3429,0.163,-0.1799,True
+mp38,traffic,Traffic and Cars,Court and Lawyers,True,0.2983,0.2384,-0.0599,False
+mp39,criminal,Crime & Prisons,Crime & Prisons,False,0.4117,0.4982,0.0866,False
+mp40,criminal,Crime & Prisons,Housing,True,0.2172,0.2393,0.0222,True
+mp41,criminal,Court and Lawyers,Crime & Prisons,True,0.1974,0.2722,0.0749,True
+mp42,immigration,Work and Employment,Court and Lawyers,True,0.016,0.0156,-0.0004,False
+mp43,immigration,"Accidents, Injuries, and Torts (Problems with Others)","Money, Debt, and Consumer Issues",True,0.0178,0.0214,0.0037,False
+mp44,benefits,"Money, Debt, and Consumer Issues",Court and Lawyers,True,0.0245,0.0211,-0.0034,False
+mp45,benefits,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.0244,0.0259,0.0014,False
+mp46,estates,"Money, Debt, and Consumer Issues",Court and Lawyers,True,0.0585,0.1097,0.0512,False
+mp47,estates,Family,Family,False,0.0897,0.0938,0.004,False
+mp48,education,"Accidents, Injuries, and Torts (Problems with Others)",Court and Lawyers,True,0.0213,0.0254,0.0041,True
+mp49,health,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.1572,0.1209,-0.0363,False
+mp50,business,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.1038,0.1149,0.0111,False

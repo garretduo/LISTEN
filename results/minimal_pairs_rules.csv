@@ -1,0 +1,51 @@
+pair_id,intended_category,top1_lay,top1_legal,top1_flip,p_intended_lay,p_intended_legal,intended_delta,intended_flip
+mp01,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp02,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp03,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp04,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp05,housing,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp06,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp07,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp08,housing,Housing,Housing,False,1.0,1.0,0.0,False
+mp09,employment,"Accidents, Injuries, and Torts (Problems with Others)",Work and Employment,True,0.0,1.0,1.0,False
+mp10,employment,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp11,employment,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp12,employment,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp13,employment,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp14,employment,"Accidents, Injuries, and Torts (Problems with Others)",Work and Employment,True,0.0,1.0,1.0,False
+mp15,employment,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp16,family,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp17,family,"Accidents, Injuries, and Torts (Problems with Others)",Family,True,0.0,1.0,1.0,True
+mp18,family,"Accidents, Injuries, and Torts (Problems with Others)",Family,True,0.0,1.0,1.0,True
+mp19,family,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp20,family,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp21,family,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp22,consumer,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp23,consumer,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp24,consumer,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp25,consumer,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp26,consumer,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp27,money_debt,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp28,money_debt,Work and Employment,"Accidents, Injuries, and Torts (Problems with Others)",True,0.0,0.0,0.0,False
+mp29,money_debt,"Accidents, Injuries, and Torts (Problems with Others)","Money, Debt, and Consumer Issues",True,0.0,1.0,1.0,False
+mp30,money_debt,"Accidents, Injuries, and Torts (Problems with Others)","Money, Debt, and Consumer Issues",True,0.0,1.0,1.0,False
+mp31,money_debt,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp32,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp33,torts,Health,Health,False,0.0,0.0,0.0,False
+mp34,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,1.0,1.0,False
+mp35,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp36,traffic,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp37,traffic,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp38,traffic,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp39,criminal,"Accidents, Injuries, and Torts (Problems with Others)",Crime & Prisons,True,0.0,1.0,1.0,True
+mp40,criminal,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp41,criminal,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp42,immigration,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
+mp43,immigration,"Accidents, Injuries, and Torts (Problems with Others)",Immigration,True,0.0,1.0,1.0,True
+mp44,benefits,Benefits,"Accidents, Injuries, and Torts (Problems with Others)",True,1.0,0.0,-1.0,False
+mp45,benefits,"Accidents, Injuries, and Torts (Problems with Others)",Benefits,True,0.0,1.0,1.0,False
+mp46,estates,"Accidents, Injuries, and Torts (Problems with Others)",Estates & Wills,True,0.0,1.0,1.0,True
+mp47,estates,"Accidents, Injuries, and Torts (Problems with Others)",Estates & Wills,True,0.0,1.0,1.0,True
+mp48,education,"Accidents, Injuries, and Torts (Problems with Others)",Education,True,0.0,1.0,1.0,False
+mp49,health,Health,Health,False,1.0,1.0,0.0,False
+mp50,business,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.0,0.0,0.0,False
