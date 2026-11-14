@@ -1,0 +1,51 @@
+pair_id,intended_category,top1_lay,top1_legal,top1_flip,p_intended_lay,p_intended_legal,intended_delta,intended_flip
+mp01,housing,Traffic and Cars,Health,True,0.1805,0.9492,0.7687,True
+mp02,housing,Housing,Housing,False,0.9769,0.996,0.0191,False
+mp03,housing,"Accidents, Injuries, and Torts (Problems with Others)",Housing,True,0.9195,0.9991,0.0796,False
+mp04,housing,Housing,Housing,False,0.9984,0.9978,-0.0007,False
+mp05,housing,Housing,Work and Employment,True,0.4601,0.8214,0.3613,False
+mp06,housing,"Money, Debt, and Consumer Issues",Housing,True,0.7372,0.9627,0.2255,False
+mp07,housing,"Accidents, Injuries, and Torts (Problems with Others)",Health,True,0.9136,0.34,-0.5737,False
+mp08,housing,Housing,Housing,False,0.9998,0.9508,-0.049,False
+mp09,employment,Work and Employment,Work and Employment,False,0.9964,1.0,0.0035,False
+mp10,employment,Work and Employment,Health,True,0.9764,0.0362,-0.9401,True
+mp11,employment,"Accidents, Injuries, and Torts (Problems with Others)",Crime & Prisons,True,0.4754,0.0393,-0.4361,True
+mp12,employment,Work and Employment,Work and Employment,False,0.9043,1.0,0.0957,False
+mp13,employment,Work and Employment,Civil and Human Rights,True,0.9786,0.276,-0.7026,True
+mp14,employment,Work and Employment,Work and Employment,False,0.9861,0.9611,-0.025,False
+mp15,employment,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.3737,0.8657,0.492,True
+mp16,family,Family,Family,False,0.9546,0.999,0.0444,False
+mp17,family,Crime & Prisons,Family,True,0.3671,0.999,0.6318,False
+mp18,family,Family,Family,False,0.9821,0.9996,0.0175,False
+mp19,family,Crime & Prisons,"Accidents, Injuries, and Torts (Problems with Others)",True,0.8614,0.5575,-0.3039,False
+mp20,family,Family,Family,False,0.9996,1.0,0.0004,False
+mp21,family,Work and Employment,Family,True,0.1303,0.9983,0.8679,True
+mp22,consumer,Traffic and Cars,"Money, Debt, and Consumer Issues",True,0.7358,0.9956,0.2598,False
+mp23,consumer,Work and Employment,"Money, Debt, and Consumer Issues",True,0.9433,0.9986,0.0553,False
+mp24,consumer,"Accidents, Injuries, and Torts (Problems with Others)",Housing,True,0.3501,0.0246,-0.3256,True
+mp25,consumer,Traffic and Cars,Housing,True,0.0055,0.102,0.0965,False
+mp26,consumer,Work and Employment,Small Business and IP,True,0.1487,0.1509,0.0022,False
+mp27,money_debt,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.4674,0.9969,0.5295,False
+mp28,money_debt,"Money, Debt, and Consumer Issues",Work and Employment,True,0.9152,0.4037,-0.5115,False
+mp29,money_debt,Work and Employment,"Money, Debt, and Consumer Issues",True,0.0878,0.8044,0.7166,True
+mp30,money_debt,"Money, Debt, and Consumer Issues",Crime & Prisons,True,0.9881,0.9103,-0.0778,False
+mp31,money_debt,"Money, Debt, and Consumer Issues","Money, Debt, and Consumer Issues",False,0.9995,1.0,0.0005,False
+mp32,torts,"Accidents, Injuries, and Torts (Problems with Others)","Accidents, Injuries, and Torts (Problems with Others)",False,0.9831,0.9902,0.0071,False
+mp33,torts,Family,Health,True,0.3072,0.9976,0.6904,False
+mp34,torts,Crime & Prisons,"Accidents, Injuries, and Torts (Problems with Others)",True,0.962,0.9996,0.0376,False
+mp35,torts,Housing,Housing,False,0.9415,0.9155,-0.026,False
+mp36,traffic,Traffic and Cars,Traffic and Cars,False,0.9843,0.9979,0.0136,False
+mp37,traffic,Traffic and Cars,"Accidents, Injuries, and Torts (Problems with Others)",True,0.9983,0.843,-0.1553,False
+mp38,traffic,"Accidents, Injuries, and Torts (Problems with Others)",Traffic and Cars,True,0.9282,0.9985,0.0703,False
+mp39,criminal,Crime & Prisons,Crime & Prisons,False,0.9968,1.0,0.0032,False
+mp40,criminal,Crime & Prisons,Crime & Prisons,False,0.9996,0.9999,0.0003,False
+mp41,criminal,Crime & Prisons,Crime & Prisons,False,0.9085,0.9999,0.0914,False
+mp42,immigration,Work and Employment,Health,True,0.0025,0.0001,-0.0023,False
+mp43,immigration,Family,Family,False,0.1905,0.1441,-0.0463,False
+mp44,benefits,Work and Employment,Work and Employment,False,0.0162,0.0014,-0.0148,False
+mp45,benefits,Work and Employment,Civil and Human Rights,True,0.6193,0.4077,-0.2115,False
+mp46,estates,Family,Estates & Wills,True,0.9384,0.9999,0.0615,False
+mp47,estates,Family,Family,False,0.9796,0.9004,-0.0793,False
+mp48,education,Family,Family,False,0.0842,0.5068,0.4226,True
+mp49,health,Health,Health,False,0.9976,0.9999,0.0023,False
+mp50,business,Work and Employment,Work and Employment,False,0.6467,0.0008,-0.6459,True
