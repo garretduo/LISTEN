@@ -8,7 +8,7 @@ PYTHON ?= python3
 # The package lives in src/, so make it importable without `pip install -e .`.
 export PYTHONPATH := src
 
-.PHONY: data splits results app test
+.PHONY: data glove splits results app test
 
 # Download the Learned Hands CSVs into data/ (gitignored).
 data:
@@ -19,8 +19,16 @@ data:
 splits:
 	$(PYTHON) scripts/make_splits.py
 
-# Fit every model and print the results table.
-results:
+# GloVe word vectors for the embedding models. A large download (about 860 MB), so it is
+# not part of `make data`. Make skips it when the file exists. Keep this path in sync with
+# paths.data_dir in configs/default.yaml.
+data/glove.6B.50d.txt:
+	$(PYTHON) scripts/download_glove.py
+
+glove: data/glove.6B.50d.txt
+
+# Fit every model and print the results table. Fetches GloVe first if it is missing.
+results: data/glove.6B.50d.txt
 	$(PYTHON) scripts/run_results.py
 
 # Launch the Streamlit app. Usage stats are off because the app must log nothing.
