@@ -5,7 +5,7 @@ Input:  configs/default.yaml, the CSVs in data/ (run `make data`), the frozen sp
         results/splits/, and data/glove.6B.50d.txt (GloVe vectors for the embedding models;
         `make results` downloads it if missing).
 Output: a table on stdout (per model and seed with 95% bootstrap intervals, then the mean
-        over the five seeds) and results/per_category.csv (threshold, precision, recall and
+        over the five seeds), saved as results/results_table.txt for a test run, and results/per_category.csv (threshold, precision, recall and
         F1 per category). Macro-F1 and micro-F1 use the categories not listed under
         `evaluation.excluded_categories`; recall@3 ranks all 20. Also scores/seed_N/<model>.csv
         with every scored story's probabilities (ids only), written under results/ for a test
@@ -126,15 +126,20 @@ def main():
 
     names = list(dict.fromkeys(name for name, _ in results))
     note = "" if part == "test" else " Cutoffs were tuned on these stories, so scores are optimistic."
-    print(f"{part.capitalize()} part.{note} Macro/micro-F1 over {keep.sum()} categories, excluding: {', '.join(sorted(excluded))}.")
-    print(f"{'model':12} {'seed':>4}  {'macro-F1':23} {'micro-F1':23} recall@3")
+    lines = [
+        f"{part.capitalize()} part.{note} Macro/micro-F1 over {keep.sum()} categories, excluding: {', '.join(sorted(excluded))}.",
+        f"{'model':12} {'seed':>4}  {'macro-F1':23} {'micro-F1':23} recall@3",
+    ]
     for name in names:
         for seed in config["seeds"]:
             r = results[name, seed]
-            print(f"{name:12} {seed:>4}  {fmt(*r['macro']):23} {fmt(*r['micro']):23} {fmt(*r['recall@3'])}")
+            lines.append(f"{name:12} {seed:>4}  {fmt(*r['macro']):23} {fmt(*r['micro']):23} {fmt(*r['recall@3'])}")
         mean = {k: np.mean([results[name, s][k] for s in config["seeds"]], axis=0) for k in ("macro", "micro", "recall@3")}
-        print(f"{name:12} {'mean':>4}  {fmt(*mean['macro']):23} {fmt(*mean['micro']):23} {fmt(*mean['recall@3'])}\n")
-    print(f"Intervals: 95% bootstrap over {part} stories; the mean row averages the five seeds' intervals.")
+        lines.append(f"{name:12} {'mean':>4}  {fmt(*mean['macro']):23} {fmt(*mean['micro']):23} {fmt(*mean['recall@3'])}\n")
+    lines.append(f"Intervals: 95% bootstrap over {part} stories; the mean row averages the five seeds' intervals.")
+    print("\n".join(lines))
+    if part == "test":
+        (ROOT / config["paths"]["results_dir"] / "results_table.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     out = ROOT / config["paths"]["results_dir"] / ("per_category.csv" if part == "test" else f"per_category_{part}.csv")
     with open(out, "w", newline="", encoding="utf-8") as f:
