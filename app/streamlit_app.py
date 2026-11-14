@@ -12,6 +12,9 @@ The app must log and store nothing, so add no logging or network calls here.
 
 import sys
 from pathlib import Path
+import html
+import sys
+from pathlib import Path
 
 import numpy as np
 import streamlit as st
@@ -19,7 +22,9 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))  # so `import listen` works without make
 
-from listen.models.stand_in import StandInModel  # noqa: E402
+from listen.explain import occlusion, word_contributions
+from listen.models.stand_in import StandInModel
+from listen.models.tfidf import TfidfLogReg
 
 # The 20 categories in file order (docs/data_notes.md). Must match the models' columns.
 CATEGORIES = [
@@ -98,6 +103,37 @@ def load_model(key):
         return bundle["model"], np.asarray(bundle["thresholds"]), False
     return StandInModel(len(CATEGORIES)), np.full(len(CATEGORIES), STAND_IN_THRESHOLD), True
 
+def explain(model, text, category):
+    """Per word contributions to one category's score.
+
+    The two logistic regression models explain from their own weights. Every other model 
+    (neural network, keyword rules and stand-in) uses occulsion to remove each word and see 
+    how much to score drops. 
+    """
+    if isinstance(model, TfidfLogReg):
+        return word_contributions(model, text, category)
+    return occlusion(model, text, category)
+
+def highlight_html(text, spans):
+    """Return the story as HTML with words shaded by how much they affected the score"""
+    strongest = max((s["contribution"] for s in spans), default = 0.0)
+    pieces = []
+    position = 0
+    for span in spans:
+        pieces.append(html.escape(text[position:span["start"]]))
+        word = html.escape(text[span["start"]:span["end"]])
+        if strongest > 0 and span["contribution"] > 0:
+            #Darker shading for more impactful words
+            alpha =  0.15 + 0.6 * span["contribution"] / strongest
+            pieces.append(
+                f'<span style="background-color: rgba(255, 196, 0, {alpha:.2f}); '
+                f'border-radius: 3px; padding: 0 2px;">{word}</span>'
+            )
+        else:
+            pieces.append(word)
+        position = span["end"]
+    pieces.append(html.escape(text[position:]))
+    return '<div style="line-height: 1.9;">' + "".join(pieces) + "</div>"
 
 st.set_page_config(page_title="LISTEN")
 st.title("LISTEN")
@@ -114,19 +150,34 @@ story = st.text_area(
     height=180,
     key=f"story_{example}",
 )
-model_label = st.radio("Model", list(MODELS))
-analyze = st.button("Analyze", type="primary")
 
-if analyze and not story.strip():
-    st.error("Type or paste a story first.")
-elif analyze:
-    model, thresholds, is_stand_in = load_model(MODELS[model_label])
+model_label = st.radio("Model", list(MODELS))
+
+if st.button("Analyze", type="primary"):
+    if not story.strip():
+        st.session_state.pop("result", None)
+        st.error("Type or paste a story first.")
+    else:
+        model, thresholds, is_stand_in = load_model(MODELS[model_label])
+        # Saved so the results stay on screen when the page reruns
+        # (for example, when a different category is picked for highlighting).
+        st.session_state["result"] = {
+            "story": story,
+            "model_label": model_label,
+            "probs": model.predict_proba([story])[0],
+        }
+
+result = st.session_state.get("result")
+if result:
+    model, thresholds, is_stand_in = load_model(MODELS[result["model_label"]])
+    probs = result["probs"]
+    top = [int(i) for i in np.argsort(probs)[::-1][:TOP_K]]
+    likely = [i for i in top if probs[i] >= thresholds[i]]
+
+    if result["story"] != story or result["model_label"] != model_label:
+        st.caption("The story or model changed. Press Analyze to update these results.")
     if is_stand_in:
         st.info("Using a stand-in model with random scores. These results mean nothing yet.")
-
-    probs = model.predict_proba([story])[0]
-    top = np.argsort(probs)[::-1][:TOP_K]
-    likely = [i for i in top if probs[i] >= thresholds[i]]
 
     if not likely:
         st.subheader("Need more detail")
@@ -144,3 +195,13 @@ elif analyze:
         else:
             st.markdown(f":gray[{CATEGORIES[i]}]")
         st.progress(float(probs[i]), text=f"{probs[i]:.0%}")
+
+    st.subheader("Words behind the guess")
+    chosen = st.radio(
+        "Show the words that pushed this category up",
+        top,
+        format_func=lambda i: CATEGORIES[i],
+    )
+    spans = explain(model, result["story"], chosen)
+    st.markdown(highlight_html(result["story"], spans), unsafe_allow_html=True)
+    st.caption("Darker shading means the word raised this category's score more.")
