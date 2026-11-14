@@ -9,15 +9,14 @@ Output: a table on stdout (per model and seed with 95% bootstrap intervals, then
         F1 per category). Macro-F1 and micro-F1 use the categories not listed under
         `evaluation.excluded_categories`; recall@3 ranks all 20. Also scores/seed_N/<model>.csv
         with every scored story's probabilities (ids only), written under results/ for a test
-        run, so the final ones can be committed, and under artifacts/ for `--part val`. And,
-        under artifacts/ (gitignored), for seed 0 <model>_0.joblib holding
-        {"model", "thresholds"}, which the app loads.
-        Models are named class_prior, rules, tfidf, emb_lr, emb_mlp.
+        run, so the final ones can be committed, and under artifacts/ for `--part val`.
+        Models are named class_prior, rules, tfidf, emb_lr, emb_mlp. The app's models are
+        trained separately by scripts/train_app_models.py.
 
 By default this scores the test part, so run it only once model choices are frozen.
 `--part val` scores the validation part instead and never predicts on test. Those scores
-are optimistic (the cutoffs were tuned on the same stories), but the saved models and
-probabilities are the same, so use it while building. It writes per_category_val.csv.
+are optimistic (the cutoffs were tuned on the same stories), so use it while building.
+It writes per_category_val.csv.
 Run it through make (`make results`) so that src/ is on PYTHONPATH.
 """
 
@@ -26,7 +25,6 @@ import csv
 import sys
 from pathlib import Path
 
-import joblib
 import numpy as np
 import yaml
 
@@ -79,9 +77,8 @@ def score(model, split, keep, seed, part="test"):
     }
 
 
-def save_artifacts(artifacts, scores_dir, name, seed, split, model, r):
-    """Write one model's per-story probabilities to scores_dir, and for seed 0 the model the
-    app loads to artifacts."""
+def save_scores(scores_dir, name, seed, split, r):
+    """Write one model's per-story probabilities to scores_dir."""
     out = scores_dir / "scores" / f"seed_{seed}"
     out.mkdir(parents=True, exist_ok=True)
     with open(out / f"{name}.csv", "w", newline="", encoding="utf-8") as f:
@@ -90,8 +87,6 @@ def save_artifacts(artifacts, scores_dir, name, seed, split, model, r):
         for part, probs in r["probs"].items():
             for story_id, row in zip(getattr(split, part).ids, probs):
                 writer.writerow([story_id, part, *np.round(row, 6)])
-    if seed == 0:  # the app loads artifacts/<name>_0.joblib
-        joblib.dump({"model": model, "thresholds": r["thresholds"]}, artifacts / f"{name}_0.joblib")
 
 
 def fmt(value, low, high):
@@ -120,7 +115,7 @@ def main():
             for name, model in build_models(split.categories, word_vectors, seed).items():
                 print(f"seed {seed}: {name}", file=sys.stderr, flush=True)
                 results[name, seed] = score(model, split, keep, seed, part)
-                save_artifacts(artifacts, scores_dir, name, seed, split, model, results[name, seed])
+                save_scores(scores_dir, name, seed, split, results[name, seed])
     except (FileNotFoundError, ValueError) as error:
         sys.exit(str(error))
 

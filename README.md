@@ -77,8 +77,8 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 
 1. `pip install -r requirements.txt` (installs required libraries)
 2. `make data` (downloads the Learned Hands dataset)
-3. `make results` (fits every model, scores the test part and prints the results table; the first run also downloads the GloVe vectors, about 860 MB, into `data/`; `make glove` fetches them on their own; it also saves each model's per-story probabilities, in a `scores` folder under `results/` after a test run, and the app's models under `artifacts/`; `python scripts/run_results.py --part val` scores validation instead of test, for use while building)
-4. `make app` (launches the Streamlit app)
+3. `make results` (fits every model, scores the test part and prints the results table; the first run also downloads the GloVe vectors, about 860 MB, into `data/`; `make glove` fetches them on their own; it also saves each model's per-story probabilities, in a `scores` folder under `results/` after a test run; `python scripts/run_results.py --part val` scores validation instead of test, for use while building)
+4. `make app` (launches the Streamlit app; run `python scripts/train_app_models.py` first to give it real models, otherwise it shows a stand-in)
 5. `make test` (optional final check: runs the test suite, and skips the data-backed tests if `data/` is missing)
 
 The train/validation/test split files are already committed in `results/splits/`, so no step above creates them (`make splits` only regenerates them when the split rules change). Teammates who load data or build a model should read `docs/using_splits.md` first.
@@ -95,6 +95,7 @@ The train/validation/test split files are already committed in `results/splits/`
 ├── configs/default.yaml        seeds, split ratios, paths
 ├── scripts/download_data.py
 ├── scripts/download_glove.py   GloVe vectors for the embedding models (`make glove`)
+├── scripts/train_app_models.py trains the three models the app offers
 ├── scripts/run_results.py      driver for `make results`
 ├── scripts/make_splits.py      writes and checks the frozen splits (`make splits`)
 ├── src/listen/
