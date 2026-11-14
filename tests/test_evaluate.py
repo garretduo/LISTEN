@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics import precision_recall_fscore_support
 
 from listen.data import load_config
-from listen.evaluate import bootstrap_ci, macro_micro_f1, per_category_prf, recall_at_k
+from listen.evaluate import bootstrap_ci, fleiss_kappa, macro_micro_f1, per_category_prf, recall_at_k
 from listen.thresholds import apply_thresholds, tune_thresholds
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -78,3 +78,12 @@ def test_excluded_categories_are_real_columns():
     categories = json.loads((ROOT / "results/splits/best_guess_binary.meta.json").read_text())["categories"]
     excluded = load_config()["evaluation"]["excluded_categories"]
     assert set(excluded) <= set(categories) and len(categories) - len(excluded) == 16
+
+
+def test_fleiss_kappa():
+    # Worked example from the Fleiss' kappa Wikipedia page: 10 items, 14 raters, 5 codes.
+    counts = [[0, 0, 0, 0, 14], [0, 2, 6, 4, 2], [0, 0, 3, 5, 6], [0, 3, 9, 2, 0], [2, 2, 8, 1, 1],
+              [7, 7, 0, 0, 0], [3, 2, 6, 3, 0], [2, 5, 3, 2, 2], [6, 5, 2, 1, 0], [0, 2, 2, 3, 7]]
+    labels = np.array([np.repeat(np.arange(5), row) for row in counts])
+    assert abs(fleiss_kappa(labels) - 0.210) < 1e-3
+    assert fleiss_kappa(np.array([["a", "a", "a"], ["b", "b", "b"]])) == 1.0

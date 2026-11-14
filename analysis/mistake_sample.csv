@@ -1,0 +1,101 @@
+item,story_id,category,kind,tfidf_prob,tfidf_guess,emb_lr_right,emb_mlp_right,rater
+1,5b60e59eda52255c20d057e4,Education,false_alarm,0.0243,Education; Small Business and IP,True,True,all
+2,5b60e59fda52255c20d06fdb,Housing,false_alarm,0.3276,"Accidents, Injuries, and Torts (Problems with Others); Housing",False,False,all
+3,5b60e59cda52255c20d01e5d,Small Business and IP,missed,0.0574,"Family; Housing; Money, Debt, and Consumer Issues",False,False,all
+4,5b60e59dda52255c20d043bc,Health,false_alarm,0.1204,"Accidents, Injuries, and Torts (Problems with Others); Crime & Prisons; Health; Money, Debt, and Consumer Issues; Traffic and Cars",True,True,all
+5,5b60e66dda52255c20df38c0,Work and Employment,missed,0.1564,"Accidents, Injuries, and Torts (Problems with Others); Crime & Prisons",False,True,all
+6,5b60e66dda52255c20df3b99,Court and Lawyers,missed,0.2303,Work and Employment,True,True,all
+7,5b60e66dda52255c20df4112,Court and Lawyers,missed,0.235,"Accidents, Injuries, and Torts (Problems with Others); Crime & Prisons; Housing",False,False,all
+8,5b60e59cda52255c20d00721,Traffic and Cars,missed,0.1024,"Money, Debt, and Consumer Issues",False,False,all
+9,5b60e59cda52255c20d00fa8,Court and Lawyers,false_alarm,0.2772,Court and Lawyers; Crime & Prisons,False,True,all
+10,5b60e59cda52255c20d00fa8,Traffic and Cars,missed,0.1557,Court and Lawyers; Crime & Prisons,True,True,all
+11,5b60e59cda52255c20d016a8,"Money, Debt, and Consumer Issues",false_alarm,0.4375,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Housing; Money, Debt, and Consumer Issues",False,False,all
+12,5b60e59cda52255c20cfffd9,Estates & Wills,false_alarm,0.0507,"Accidents, Injuries, and Torts (Problems with Others); Estates & Wills; Family; Money, Debt, and Consumer Issues; Traffic and Cars",True,True,all
+13,5b60e59cda52255c20cffbff,Family,missed,0.0863,"Accidents, Injuries, and Torts (Problems with Others); Housing; Money, Debt, and Consumer Issues",False,False,all
+14,5b60e5a1da52255c20d09fc9,Housing,missed,0.2103,Family; Government services,True,False,all
+15,5b60e5a1da52255c20d09ba9,Civil and Human Rights,missed,0.0802,Court and Lawyers; Crime & Prisons,False,False,all
+16,5b60e59cda52255c20d007bc,Small Business and IP,missed,0.0717,"Money, Debt, and Consumer Issues; Work and Employment",False,False,all
+17,5b60e66dda52255c20df38c0,"Accidents, Injuries, and Torts (Problems with Others)",false_alarm,0.3843,"Accidents, Injuries, and Torts (Problems with Others); Crime & Prisons",True,True,all
+18,5b60e59eda52255c20d044f8,Education,missed,0.0189,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Crime & Prisons; Estates & Wills; Family",False,False,all
+19,5b60e5a1da52255c20d099ec,Government services,false_alarm,0.0448,Government services; Small Business and IP,True,True,all
+20,5b60e59dda52255c20d03fde,Estates & Wills,false_alarm,0.0695,Estates & Wills; Family,True,True,all
+21,5b60e59cda52255c20cff805,"Accidents, Injuries, and Torts (Problems with Others)",false_alarm,0.3678,"Accidents, Injuries, and Torts (Problems with Others); Environmental Justice; Housing",True,False,all
+22,5b60e59cda52255c20d02597,Government services,false_alarm,0.0469,Court and Lawyers; Estates & Wills; Family; Government services,True,True,all
+23,5b60e66dda52255c20df3a2e,Estates & Wills,false_alarm,0.0506,"Accidents, Injuries, and Torts (Problems with Others); Estates & Wills; Health",True,True,all
+24,5b60e59cda52255c20d02527,"Accidents, Injuries, and Torts (Problems with Others)",false_alarm,0.3263,"Accidents, Injuries, and Torts (Problems with Others); Family",True,True,all
+25,5b60e59dda52255c20d02ddc,"Accidents, Injuries, and Torts (Problems with Others)",missed,0.2535,"Court and Lawyers; Housing; Money, Debt, and Consumer Issues",False,False,all
+26,5b60e59cda52255c20d02597,Traffic and Cars,missed,0.1512,Court and Lawyers; Estates & Wills; Family; Government services,False,False,all
+27,5b60e59dda52255c20d037e6,Court and Lawyers,missed,0.1992,"Money, Debt, and Consumer Issues",False,False,all
+28,5b60e59dda52255c20d02dc4,Estates & Wills,false_alarm,0.0603,"Estates & Wills; Family; Money, Debt, and Consumer Issues",True,True,all
+29,5b60e59cda52255c20cffae5,Housing,false_alarm,0.2646,"Housing; Money, Debt, and Consumer Issues",True,True,all
+30,5b60e59cda52255c20d01ad3,Family,missed,0.1514,,False,False,all
+31,5b60e59cda52255c20d02033,Traffic and Cars,missed,0.1219,Court and Lawyers; Crime & Prisons,True,True,garret
+32,5b60e59cda52255c20d01e5d,"Accidents, Injuries, and Torts (Problems with Others)",missed,0.2897,"Family; Housing; Money, Debt, and Consumer Issues",False,False,lyndon
+33,5b60e59dda52255c20d02a95,Family,false_alarm,0.1946,Estates & Wills; Family,False,False,sohum
+34,5b60e59cda52255c20cfff1c,"Accidents, Injuries, and Torts (Problems with Others)",false_alarm,0.3232,"Accidents, Injuries, and Torts (Problems with Others); Housing",True,False,garret
+35,5b60e59cda52255c20d01c25,Civil and Human Rights,missed,0.0996,Family; Health; Work and Employment,False,False,lyndon
+36,5b60e59cda52255c20d003ef,Court and Lawyers,false_alarm,0.301,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Crime & Prisons",False,False,sohum
+37,5b60e59cda52255c20cfffc4,"Money, Debt, and Consumer Issues",missed,0.2483,,False,False,garret
+38,5b60e59cda52255c20d01e5d,Court and Lawyers,missed,0.2202,"Family; Housing; Money, Debt, and Consumer Issues",True,True,lyndon
+39,5b60e59cda52255c20d01e3d,Benefits,missed,0.023,"Health; Money, Debt, and Consumer Issues",False,False,sohum
+40,5b60e59cda52255c20d01243,Civil and Human Rights,false_alarm,0.1045,"Accidents, Injuries, and Torts (Problems with Others); Civil and Human Rights; Education; Family",True,True,garret
+41,5b60e59cda52255c20d01fd2,Family,missed,0.1502,"Accidents, Injuries, and Torts (Problems with Others); Health",False,False,lyndon
+42,5b60e59cda52255c20d02662,"Accidents, Injuries, and Torts (Problems with Others)",false_alarm,0.3903,"Accidents, Injuries, and Torts (Problems with Others); Housing; Money, Debt, and Consumer Issues",False,False,sohum
+43,5b60e59cda52255c20cfffc4,Health,missed,0.0871,,True,False,garret
+44,5b60e59cda52255c20cff881,"Money, Debt, and Consumer Issues",missed,0.2838,Work and Employment,True,True,lyndon
+45,5b60e5a1da52255c20d09a25,Crime & Prisons,missed,0.2262,Government services,False,True,sohum
+46,5b60e59dda52255c20d03fce,Small Business and IP,false_alarm,0.0877,Small Business and IP,False,True,garret
+47,5b60e59cda52255c20d024c9,Health,false_alarm,0.1138,Benefits; Estates & Wills; Family; Government services; Health; Work and Employment,True,True,lyndon
+48,5b60e59dda52255c20d04261,Family,false_alarm,0.1742,Estates & Wills; Family,True,True,sohum
+49,5b60e59cda52255c20d00e44,Crime & Prisons,false_alarm,0.3474,Court and Lawyers; Crime & Prisons; Traffic and Cars,False,False,garret
+50,5b60e59cda52255c20cfffd9,Crime & Prisons,missed,0.226,"Accidents, Injuries, and Torts (Problems with Others); Estates & Wills; Family; Money, Debt, and Consumer Issues; Traffic and Cars",False,False,lyndon
+51,5b60e59dda52255c20d03dfb,Court and Lawyers,false_alarm,0.3685,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Crime & Prisons; Family",True,True,sohum
+52,5b60e59cda52255c20cffb0c,Family,false_alarm,0.1663,"Accidents, Injuries, and Torts (Problems with Others); Family; Housing",True,True,garret
+53,5b60e59fda52255c20d070ab,Estates & Wills,false_alarm,0.059,Estates & Wills; Family,False,True,lyndon
+54,5b60e59cda52255c20d004af,Immigration,missed,0.0188,Court and Lawyers; Family,False,False,sohum
+55,5b60e59eda52255c20d057e4,Crime & Prisons,missed,0.1389,Education; Small Business and IP,False,False,garret
+56,5b60e59dda52255c20d042df,Estates & Wills,false_alarm,0.0516,"Accidents, Injuries, and Torts (Problems with Others); Crime & Prisons; Estates & Wills; Family",True,True,lyndon
+57,5b60e59cda52255c20d02111,Court and Lawyers,missed,0.2369,Benefits; Civil and Human Rights; Crime & Prisons; Estates & Wills; Family; Health,True,True,sohum
+58,5b60e59eda52255c20d0479b,Court and Lawyers,false_alarm,0.2637,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Estates & Wills; Family; Health",True,True,garret
+59,5b60e59dda52255c20d030a2,Court and Lawyers,missed,0.2438,"Estates & Wills; Family; Money, Debt, and Consumer Issues",False,False,lyndon
+60,5b60e59dda52255c20d02a95,"Money, Debt, and Consumer Issues",missed,0.2219,Estates & Wills; Family,False,False,sohum
+61,5b60e59cda52255c20d02111,Crime & Prisons,false_alarm,0.2558,Benefits; Civil and Human Rights; Crime & Prisons; Estates & Wills; Family; Health,True,True,garret
+62,5b60e59cda52255c20d00c02,Government services,missed,0.0349,Court and Lawyers; Crime & Prisons; Family,False,True,lyndon
+63,5b60e59fda52255c20d06386,Crime & Prisons,missed,0.1893,,True,True,sohum
+64,5b60e59cda52255c20cff8ce,Government services,false_alarm,0.0444,Court and Lawyers; Crime & Prisons; Government services,True,False,garret
+65,5b60e59cda52255c20cffc61,Civil and Human Rights,missed,0.0846,Small Business and IP,True,True,lyndon
+66,5b60e59cda52255c20cff8ce,Court and Lawyers,false_alarm,0.2596,Court and Lawyers; Crime & Prisons; Government services,False,False,sohum
+67,5b60e59fda52255c20d070ab,Civil and Human Rights,missed,0.0972,Estates & Wills; Family,True,False,garret
+68,5b60e59dda52255c20d043ee,"Accidents, Injuries, and Torts (Problems with Others)",missed,0.2209,Family,False,False,lyndon
+69,5b60e59dda52255c20d037e6,"Money, Debt, and Consumer Issues",false_alarm,0.3634,"Money, Debt, and Consumer Issues",False,False,sohum
+70,5b60e59eda52255c20d044f8,Work and Employment,missed,0.1238,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Crime & Prisons; Estates & Wills; Family",False,False,garret
+71,5b60e59dda52255c20d0408e,Crime & Prisons,missed,0.1617,"Housing; Money, Debt, and Consumer Issues",False,False,lyndon
+72,5b60e59cda52255c20d00721,"Money, Debt, and Consumer Issues",false_alarm,0.3496,"Money, Debt, and Consumer Issues",False,False,sohum
+73,5b60e59dda52255c20d043ee,Family,false_alarm,0.1559,Family,True,True,garret
+74,5b60e5a1da52255c20d0a09d,Court and Lawyers,false_alarm,0.305,"Court and Lawyers; Education; Government services; Money, Debt, and Consumer Issues",True,True,lyndon
+75,5b60e59cda52255c20cff87b,"Accidents, Injuries, and Torts (Problems with Others)",missed,0.3055,Traffic and Cars,False,False,sohum
+76,5b60e59cda52255c20d00661,"Accidents, Injuries, and Torts (Problems with Others)",false_alarm,0.4078,"Accidents, Injuries, and Torts (Problems with Others); Money, Debt, and Consumer Issues; Traffic and Cars",False,False,garret
+77,5b60e59fda52255c20d0708c,Family,false_alarm,0.3532,Estates & Wills; Family,False,False,lyndon
+78,5b60e59dda52255c20d039bd,Government services,false_alarm,0.0484,Government services,True,False,sohum
+79,5b60e59cda52255c20cff802,Government services,false_alarm,0.0458,Court and Lawyers; Crime & Prisons; Government services,False,False,garret
+80,5b60e59cda52255c20d00353,Court and Lawyers,missed,0.209,"Accidents, Injuries, and Torts (Problems with Others)",True,False,lyndon
+81,5b60e59fda52255c20d063f5,Family,false_alarm,0.159,Court and Lawyers; Estates & Wills; Family; Health,True,True,sohum
+82,5b60e59fda52255c20d06f08,"Accidents, Injuries, and Torts (Problems with Others)",missed,0.259,Court and Lawyers; Health,False,False,garret
+83,5b60e5a0da52255c20d09753,"Accidents, Injuries, and Torts (Problems with Others)",missed,0.247,"Court and Lawyers; Housing; Money, Debt, and Consumer Issues",False,False,lyndon
+84,5b60e59cda52255c20cffc61,Crime & Prisons,missed,0.159,Small Business and IP,True,False,sohum
+85,5b60e59cda52255c20d0037d,Government services,missed,0.0333,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers; Crime & Prisons; Traffic and Cars",False,False,garret
+86,5b60e59cda52255c20d02678,Court and Lawyers,missed,0.1937,"Accidents, Injuries, and Torts (Problems with Others); Benefits; Civil and Human Rights; Crime & Prisons; Estates & Wills; Family; Health",False,False,lyndon
+87,5b60e59cda52255c20cff8ce,Civil and Human Rights,missed,0.0861,Court and Lawyers; Crime & Prisons; Government services,False,False,sohum
+88,5b60e59dda52255c20d04184,Government services,false_alarm,0.044,Government services; Work and Employment,True,True,garret
+89,5b60e59dda52255c20d02dcf,Government services,false_alarm,0.0449,Government services; Small Business and IP,True,True,lyndon
+90,5b60e59cda52255c20d00c25,Housing,missed,0.2117,"Accidents, Injuries, and Torts (Problems with Others); Money, Debt, and Consumer Issues",True,True,sohum
+91,5b60e59cda52255c20d02597,Court and Lawyers,false_alarm,0.2642,Court and Lawyers; Estates & Wills; Family; Government services,True,True,garret
+92,5b60e59cda52255c20d02111,Benefits,false_alarm,0.0321,Benefits; Civil and Human Rights; Crime & Prisons; Estates & Wills; Family; Health,True,True,lyndon
+93,5b60e5a1da52255c20d09d13,Crime & Prisons,missed,0.1737,"Accidents, Injuries, and Torts (Problems with Others); Court and Lawyers",False,False,sohum
+94,5b60e59cda52255c20d00c3e,Health,false_alarm,0.1,Estates & Wills; Family; Health,True,True,garret
+95,5b60e59cda52255c20d00c02,Court and Lawyers,false_alarm,0.2906,Court and Lawyers; Crime & Prisons; Family,False,False,lyndon
+96,5b60e59cda52255c20cffce4,Estates & Wills,false_alarm,0.0523,"Court and Lawyers; Estates & Wills; Family; Money, Debt, and Consumer Issues",True,True,sohum
+97,5b60e59cda52255c20d02111,Health,false_alarm,0.1229,Benefits; Civil and Human Rights; Crime & Prisons; Estates & Wills; Family; Health,False,True,garret
+98,5b60e59dda52255c20d02a95,Work and Employment,missed,0.1299,Estates & Wills; Family,False,False,lyndon
+99,5b60e59cda52255c20d022a1,Traffic and Cars,missed,0.1465,Crime & Prisons,True,True,sohum
+100,5b60e59cda52255c20d02143,Traffic and Cars,false_alarm,0.324,"Money, Debt, and Consumer Issues; Traffic and Cars",False,False,garret

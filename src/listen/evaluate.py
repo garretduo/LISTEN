@@ -71,3 +71,16 @@ def bootstrap_ci(metric, y_true: np.ndarray, y_pred: np.ndarray, mask: np.ndarra
         values.append(metric(y_true[rows], y_pred[rows], mask[rows]))
     low, high = np.nanpercentile(values, [2.5, 97.5])
     return float(low), float(high)
+
+
+def fleiss_kappa(labels: np.ndarray) -> float:
+    """Fleiss' kappa for an (items, raters) array of codes, with every rater on every item.
+
+    1 is perfect agreement and 0 is what chance alone would give. NaN if all codes are equal.
+    """
+    labels = np.asarray(labels, dtype=str)
+    counts = (labels[:, :, None] == np.unique(labels)).sum(1)  # (items, codes)
+    n = labels.shape[1]
+    agree = ((counts**2).sum(1) - n) / (n * (n - 1))
+    chance = ((counts.sum(0) / counts.sum()) ** 2).sum()
+    return float((agree.mean() - chance) / (1 - chance)) if chance < 1 else float("nan")

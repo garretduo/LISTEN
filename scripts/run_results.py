@@ -5,19 +5,18 @@ Input:  configs/default.yaml, the CSVs in data/ (run `make data`), the frozen sp
         results/splits/, and data/glove.6B.50d.txt (GloVe vectors for the embedding models;
         `make results` downloads it if missing).
 Output: a table on stdout (per model and seed with 95% bootstrap intervals, then the mean
-        over the five seeds) and results/per_category.csv (threshold, precision, recall and
+        over the five seeds), saved as results/results_table.txt for a test run, and results/per_category.csv (threshold, precision, recall and
         F1 per category). Macro-F1 and micro-F1 use the categories not listed under
         `evaluation.excluded_categories`; recall@3 ranks all 20. Also scores/seed_N/<model>.csv
         with every scored story's probabilities (ids only), written under results/ for a test
-        run, so the final ones can be committed, and under artifacts/ for `--part val`. And,
-        under artifacts/ (gitignored), for seed 0 <model>_0.joblib holding
-        {"model", "thresholds"}, which the app loads.
-        Models are named class_prior, rules, tfidf, emb_lr, emb_mlp.
+        run, so the final ones can be committed, and under artifacts/ for `--part val`.
+        Models are named class_prior, rules, tfidf, emb_lr, emb_mlp. The app's models are
+        trained separately by scripts/train_app_models.py.
 
 By default this scores the test part, so run it only once model choices are frozen.
 `--part val` scores the validation part instead and never predicts on test. Those scores
-are optimistic (the cutoffs were tuned on the same stories), but the saved models and
-probabilities are the same, so use it while building. It writes per_category_val.csv.
+are optimistic (the cutoffs were tuned on the same stories), so use it while building.
+It writes per_category_val.csv.
 Run it through make (`make results`) so that src/ is on PYTHONPATH.
 """
 
@@ -26,7 +25,6 @@ import csv
 import sys
 from pathlib import Path
 
-import joblib
 import numpy as np
 import yaml
 
@@ -79,9 +77,8 @@ def score(model, split, keep, seed, part="test"):
     }
 
 
-def save_artifacts(artifacts, scores_dir, name, seed, split, model, r):
-    """Write one model's per-story probabilities to scores_dir, and for seed 0 the model the
-    app loads to artifacts."""
+def save_scores(scores_dir, name, seed, split, r):
+    """Write one model's per-story probabilities to scores_dir."""
     out = scores_dir / "scores" / f"seed_{seed}"
     out.mkdir(parents=True, exist_ok=True)
     with open(out / f"{name}.csv", "w", newline="", encoding="utf-8") as f:
@@ -90,8 +87,6 @@ def save_artifacts(artifacts, scores_dir, name, seed, split, model, r):
         for part, probs in r["probs"].items():
             for story_id, row in zip(getattr(split, part).ids, probs):
                 writer.writerow([story_id, part, *np.round(row, 6)])
-    if seed == 0:  # the app loads artifacts/<name>_0.joblib
-        joblib.dump({"model": model, "thresholds": r["thresholds"]}, artifacts / f"{name}_0.joblib")
 
 
 def fmt(value, low, high):
@@ -120,21 +115,26 @@ def main():
             for name, model in build_models(split.categories, word_vectors, seed).items():
                 print(f"seed {seed}: {name}", file=sys.stderr, flush=True)
                 results[name, seed] = score(model, split, keep, seed, part)
-                save_artifacts(artifacts, scores_dir, name, seed, split, model, results[name, seed])
+                save_scores(scores_dir, name, seed, split, results[name, seed])
     except (FileNotFoundError, ValueError) as error:
         sys.exit(str(error))
 
     names = list(dict.fromkeys(name for name, _ in results))
     note = "" if part == "test" else " Cutoffs were tuned on these stories, so scores are optimistic."
-    print(f"{part.capitalize()} part.{note} Macro/micro-F1 over {keep.sum()} categories, excluding: {', '.join(sorted(excluded))}.")
-    print(f"{'model':12} {'seed':>4}  {'macro-F1':23} {'micro-F1':23} recall@3")
+    lines = [
+        f"{part.capitalize()} part.{note} Macro/micro-F1 over {keep.sum()} categories, excluding: {', '.join(sorted(excluded))}.",
+        f"{'model':12} {'seed':>4}  {'macro-F1':23} {'micro-F1':23} recall@3",
+    ]
     for name in names:
         for seed in config["seeds"]:
             r = results[name, seed]
-            print(f"{name:12} {seed:>4}  {fmt(*r['macro']):23} {fmt(*r['micro']):23} {fmt(*r['recall@3'])}")
+            lines.append(f"{name:12} {seed:>4}  {fmt(*r['macro']):23} {fmt(*r['micro']):23} {fmt(*r['recall@3'])}")
         mean = {k: np.mean([results[name, s][k] for s in config["seeds"]], axis=0) for k in ("macro", "micro", "recall@3")}
-        print(f"{name:12} {'mean':>4}  {fmt(*mean['macro']):23} {fmt(*mean['micro']):23} {fmt(*mean['recall@3'])}\n")
-    print(f"Intervals: 95% bootstrap over {part} stories; the mean row averages the five seeds' intervals.")
+        lines.append(f"{name:12} {'mean':>4}  {fmt(*mean['macro']):23} {fmt(*mean['micro']):23} {fmt(*mean['recall@3'])}\n")
+    lines.append(f"Intervals: 95% bootstrap over {part} stories; the mean row averages the five seeds' intervals.")
+    print("\n".join(lines))
+    if part == "test":
+        (ROOT / config["paths"]["results_dir"] / "results_table.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     out = ROOT / config["paths"]["results_dir"] / ("per_category.csv" if part == "test" else f"per_category_{part}.csv")
     with open(out, "w", newline="", encoding="utf-8") as f:
