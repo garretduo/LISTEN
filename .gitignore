@@ -225,3 +225,6 @@ __marimo__/
 
 # Local Claude Code instructions (not shared with the team)
 /CLAUDE.md
+
+# Validation-only dev run of scripts/run_results.py; only the test table is kept.
+/results/per_category_val.csv
