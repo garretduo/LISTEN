@@ -81,6 +81,27 @@ To run a fresh clone end-to-end, run the following commands in the exact order s
 4. `make app` (launches the Streamlit app; run `python scripts/train_app_models.py` first to give it real models, otherwise it shows a stand-in)
 5. `make test` (optional final check: runs the test suite, and skips the data-backed tests if `data/` is missing)
 
+**On Windows** (no `make`), run the same steps from the repo root in PowerShell:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+$env:PYTHONPATH = "src"
+python scripts/download_data.py      # make data
+python scripts/download_glove.py     # make glove (about 860 MB)
+python scripts/run_results.py        # make results
+python scripts/train_app_models.py   # models for the app
+python -m streamlit run app/streamlit_app.py --browser.gatherUsageStats false   # make app
+python -m pytest                     # make test
+```
+
+**Reproducibility check (Nov 15, fresh clone on Windows, Python 3.11):** all tests pass,
+and the class-prior, keyword and TF-IDF results match the committed files exactly. The
+embedding models differ slightly by machine because PyTorch training is not bit-for-bit
+identical across platforms: the neural network's mean macro-F1 was 0.469 against the
+committed 0.472, with every seed inside its 95% interval.
+
 The train/validation/test split files are already committed in `results/splits/`, so no step above creates them (`make splits` only regenerates them when the split rules change). Teammates who load data or build a model should read `docs/using_splits.md` first.
 
 ## Repository layout
