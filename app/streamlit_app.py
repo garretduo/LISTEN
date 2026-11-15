@@ -25,6 +25,7 @@ sys.path.insert(0, str(ROOT / "src"))  # so `import listen` works without make
 from listen.explain import occlusion, word_contributions
 from listen.models.stand_in import StandInModel
 from listen.models.tfidf import TfidfLogReg
+from listen.text import clean_text
 
 # The 20 categories in file order (docs/data_notes.md). Must match the models' columns.
 CATEGORIES = [
@@ -52,8 +53,10 @@ CATEGORIES = [
 
 # Label shown in the app -> file-name key for the saved model in artifacts/.
 MODELS = {
+    "Class prior": "class_prior",
     "Keyword rules": "rules",
     "TF-IDF + logistic regression": "tfidf",
+    "Averaged embeddings + logistic regression": "emb_lr",
     "Averaged embeddings + neural network": "emb_mlp",
 }
 
@@ -84,6 +87,7 @@ FOLLOW_UPS = [
 ]
 
 TOP_K = 5
+MIN_LIKELY = 0.10  # a score below this is never "likely", whatever the category's tuned cutoff
 STAND_IN_THRESHOLD = 0.5
 
 
@@ -155,17 +159,19 @@ story = st.text_area(
 model_label = st.radio("Model", list(MODELS))
 
 if st.button("Analyze", type="primary"):
-    if not story.strip():
+    cleaned = clean_text(story)  # the models were trained on cleaned text
+    if not cleaned:
         st.session_state.pop("result", None)
-        st.error("Type or paste a story first.")
+        st.error("Type or paste a story first. Links and usernames are removed before analysis.")
     else:
         model, thresholds, is_stand_in = load_model(MODELS[model_label])
         # Saved so the results stay on screen when the page reruns
         # (for example, when a different category is picked for highlighting).
         st.session_state["result"] = {
             "story": story,
+            "cleaned": cleaned,
             "model_label": model_label,
-            "probs": model.predict_proba([story])[0],
+            "probs": model.predict_proba([cleaned])[0],
         }
 
 result = st.session_state.get("result")
@@ -173,7 +179,8 @@ if result:
     model, thresholds, is_stand_in = load_model(MODELS[result["model_label"]])
     probs = result["probs"]
     top = [int(i) for i in np.argsort(probs)[::-1][:TOP_K]]
-    likely = [i for i in top if probs[i] >= thresholds[i]]
+    cutoffs = np.maximum(thresholds, MIN_LIKELY)
+    likely = [i for i in top if probs[i] >= cutoffs[i]]
 
     if result["story"] != story or result["model_label"] != model_label:
         st.caption("The story or model changed. Press Analyze to update these results.")
@@ -190,9 +197,13 @@ if result:
             st.markdown(f"- {question}")
 
     st.subheader("Possible categories")
-    st.caption("Each category has its own cutoff, so a lower bar can still be marked likely.")
+    st.caption("Each category has its own cutoff (never below 10%), so a lower bar can still be marked likely.")
+    if result["model_label"] == "Class prior":
+        st.caption("Class prior ignores your story: every story gets the same scores, how often each category appears in the training data.")
+    if result["model_label"] == "Keyword rules":
+        st.caption("Keyword rules only check whether certain words appear, so every bar is 0% or 100%.")
     for i in top:
-        if probs[i] >= thresholds[i]:
+        if probs[i] >= cutoffs[i]:
             st.markdown(f"**{CATEGORIES[i]}** · likely")
         else:
             st.markdown(f":gray[{CATEGORIES[i]}]")
@@ -204,6 +215,8 @@ if result:
         top,
         format_func=lambda i: CATEGORIES[i],
     )
-    spans = explain(model, result["story"], chosen)
-    st.markdown(highlight_html(result["story"], spans), unsafe_allow_html=True)
+    spans = explain(model, result["cleaned"], chosen)
+    st.markdown(highlight_html(result["cleaned"], spans), unsafe_allow_html=True)
     st.caption("Darker shading means the word raised this category's score more.")
+    if result["cleaned"] != result["story"]:
+        st.caption("Links, usernames and extra whitespace were removed before analysis.")
