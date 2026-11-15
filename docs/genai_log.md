@@ -18,3 +18,13 @@ to the kappa.
 **Data handling:** my label sheet, which contains story text from the dataset, was
 uploaded to Claude to get these suggestions. The team agreed AI help was allowed for
 labeling.
+
+## Sohum Sarwate
+
+Tool for all rows: GPT-6.1 (OpenAI), used in ChatGPT.
+
+| **Task** | **How checked** | **Where it appears** |
+| --- | --- | --- |
+| Helped draft and troubleshoot parts of the model code, including handling missing labels and sharing averaged GloVe vectors across both embedding models. | I ran small tests with known outcomes, then ran all five models on the first official validation split to verify that each returned scores for all 20 categories. | `src/listen/baselines.py`, `src/listen/models/` |
+| Helped implement word-level explanations for the logistic regression models. | I checked that repeated words were highlighted at the correct positions and that the word contributions added up to the model's logit after subtracting the intercept. | `src/listen/explain.py` |
+| Helped turn a one-off validation run into a reusable script that exports prediction scores. | I ran the export for all five splits and checked that the saved story IDs and category order matched the official validation data. | `scripts/export_validation_scores.py` |
