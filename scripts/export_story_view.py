@@ -2,10 +2,12 @@
 
 Input:  the CSVs in data/ (run `make data`), the frozen splits in results/splits/, and the
         per-story scores in results/scores/.
-Output: artifacts/story_view/stories.csv.gz      cleaned text, labels (1 yes, 0 no, blank unknown)
-                                                 and each story's part (train, val, test) per seed
-        artifacts/story_view/predictions.csv.gz  the categories each model said yes to, for the
-                                                 val and test stories of each seed
+Output: artifacts/story_view/stories.csv.gz   cleaned text, labels (1 yes, 0 no, blank unknown)
+                                              and each story's part (train, val, test) per seed
+        artifacts/story_view/scores.csv.gz    each model's score per category, for the val and
+                                              test stories of each seed
+        artifacts/story_view/cutoffs.csv.gz   the cutoff per model and category that turns a
+                                              score into a yes (tuned on that seed's val part)
 Only cleaned text is written, so usernames and links never leave this machine.
 
 Run from the repo root:
@@ -51,18 +53,23 @@ def main():
     stories.sort_values("id").to_csv(OUT_DIR / "stories.csv.gz", index=False)
 
     # A model says yes where its score reaches the category's cutoff, tuned on that seed's val part.
-    rows = []
+    score_frames, cutoff_rows = [], []
     for seed in seeds:
         split = splits[seed]
         for model in MODELS:
             scores = pd.read_csv(ROOT / "results" / "scores" / f"seed_{seed}" / f"{model}.csv", dtype={"_id": str})
             val = scores[scores["part"] == "val"]
             cutoffs = np.maximum(tune_thresholds(split.val.Y, val[categories].to_numpy(), split.val.mask), MIN_LIKELY)
-            for story_id, flags in zip(scores["_id"], scores[categories].to_numpy() >= cutoffs):
-                rows.append((seed, story_id, model, " | ".join(c for c, f in zip(categories, flags) if f)))
-    pd.DataFrame(rows, columns=["seed", "id", "model", "predicted"]).to_csv(OUT_DIR / "predictions.csv.gz", index=False)
+            frame = scores.drop(columns="part").rename(columns={"_id": "id"})
+            frame.insert(0, "model", model)
+            frame.insert(0, "seed", seed)
+            score_frames.append(frame)
+            cutoff_rows.append([seed, model, *cutoffs])
+    scores = pd.concat(score_frames)
+    scores.to_csv(OUT_DIR / "scores.csv.gz", index=False)
+    pd.DataFrame(cutoff_rows, columns=["seed", "model", *categories]).to_csv(OUT_DIR / "cutoffs.csv.gz", index=False)
 
-    print(f"Wrote {len(stories):,} stories and {len(rows):,} predictions to {OUT_DIR.relative_to(ROOT)}/")
+    print(f"Wrote {len(stories):,} stories and {len(scores):,} score rows to {OUT_DIR.relative_to(ROOT)}/")
 
 
 if __name__ == "__main__":
