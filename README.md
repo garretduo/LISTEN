@@ -117,7 +117,7 @@ The train/validation/test split files are already committed in `results/splits/`
 ├── scripts/download_data.py
 ├── scripts/download_glove.py   GloVe vectors for the embedding models (`make glove`)
 ├── scripts/train_app_models.py trains the five models the app offers
-├── scripts/export_story_view.py writes the cleaned stories and model predictions behind the data page
+├── scripts/export_story_view.py writes the cleaned stories, model scores and tuned cutoffs behind the data page
 ├── scripts/run_results.py      driver for `make results`
 ├── scripts/make_splits.py      writes and checks the frozen splits (`make splits`)
 ├── src/listen/
@@ -131,7 +131,7 @@ The train/validation/test split files are already committed in `results/splits/`
 │   └── explain.py              word contributions and occlusion
 ├── tests/                      cleaning, splits, data loading, doc examples
 ├── app/streamlit_app.py        classify a story with any of the five models
-├── app/pages/Explore_the_data.py  browse the cleaned stories, labels and splits, and compare the models (needs `scripts/export_story_view.py` output)
+├── app/pages/Explore_the_data.py  browse the cleaned stories and labels, see which categories go together, and compare the models at different cutoffs (needs `scripts/export_story_view.py` output)
 ├── analysis/                   error labeling (sample_mistakes, make_label_sheets, agreement), minimal pairs
 ├── docs/                       decisions.md, data_notes.md, using_splits.md
 ├── results/                    small tables only
