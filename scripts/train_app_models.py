@@ -20,9 +20,10 @@ sys.path.insert(0, str(ROOT / "src"))  # so `import listen` works without make
 
 import joblib  
 
-from listen.baselines import RuleBasedBaseline  
-from listen.data import get_split  
-from listen.models.embedding_mlp import EmbeddingMLP  
+from listen.baselines import ClassPriorBaseline, RuleBasedBaseline
+from listen.data import get_split
+from listen.models.embedding_lr import EmbeddingLogReg
+from listen.models.embedding_mlp import EmbeddingMLP
 from listen.models.glove import load_glove  
 from listen.models.tfidf import TfidfLogReg  
 from listen.thresholds import tune_thresholds  
@@ -41,8 +42,10 @@ def main():
 
     # Keys must match the MODELS dictionary in app/streamlit_app.py.
     models = {
+        "class_prior": ClassPriorBaseline(),
         "rules": RuleBasedBaseline(split.categories),
         "tfidf": TfidfLogReg(),
+        "emb_lr": EmbeddingLogReg(word_vectors),
         "emb_mlp": EmbeddingMLP(word_vectors, seed=SEED),
     }
 
