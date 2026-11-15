@@ -1,3 +1,13 @@
+## Garret Duo
+
+Tool for all rows: Claude Sonnet 5.5 (Claude Code)
+
+| **Task** | **How checked** | **Where it appears** |
+| --- | --- | --- |
+| Consulted AI on cleaning the raw stories, handling inconsistencies, and preparing the dataset for training and evaluation. | The repository includes tests for text cleaning, data loading, and the saved train, validation, and test splits. | `src/listen/data.py`, `src/listen/text.py`, `tests/` |
+| Used AI suggestions to organize the project directories and separate the scripts for data preparation, model training, and evaluation. | The final evaluation ran on the saved splits and produced both the overall and per-category results. | `Makefile`, `scripts/`, `results/results_table.txt`, `results/per_category.csv` |
+| Used AI to draft docstrings and improve comments explaining what functions do, what they take in, and what they return. | The repository includes tests for documentation examples. | Docstrings and comments in the data-processing and evaluation code |
+
 ## Lyndon Huang
 
 Tool for all rows: Claude (Anthropic), Opus 5.5, in the Claude app.
